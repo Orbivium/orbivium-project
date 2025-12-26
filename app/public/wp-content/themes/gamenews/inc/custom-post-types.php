@@ -108,21 +108,21 @@ endif;
 add_action( 'init', 'oyunhaber_register_cpts' );
 
 // Populate Default Terms
+// Populate Default Terms
 function oyunhaber_insert_default_terms() {
-    if ( ! term_exists( 'PC', 'platform' ) ) {
-        wp_insert_term( 'PC', 'platform' );
+    $taxonomy = 'platform';
+
+    // Check if taxonomy exists to avoid errors
+    if ( ! taxonomy_exists( $taxonomy ) ) {
+        return;
     }
-    if ( ! term_exists( 'PlayStation', 'platform' ) ) {
-        wp_insert_term( 'PlayStation', 'platform' );
-    }
-    if ( ! term_exists( 'Xbox', 'platform' ) ) {
-        wp_insert_term( 'Xbox', 'platform' );
-    }
-    if ( ! term_exists( 'Nintendo', 'platform' ) ) {
-        wp_insert_term( 'Nintendo', 'platform' );
-    }
-    if ( ! term_exists( 'Mobil', 'platform' ) ) {
-        wp_insert_term( 'Mobil', 'platform' );
+
+    $terms = array( 'Genel', 'PC', 'PlayStation', 'Xbox', 'Nintendo', 'Mobil' );
+
+    foreach ( $terms as $term ) {
+        if ( ! term_exists( $term, $taxonomy ) ) {
+            wp_insert_term( $term, $taxonomy );
+        }
     }
 }
-add_action( 'init', 'oyunhaber_insert_default_terms' );
+add_action( 'admin_init', 'oyunhaber_insert_default_terms' );

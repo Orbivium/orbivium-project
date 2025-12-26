@@ -123,3 +123,103 @@ add_action( 'wp_enqueue_scripts', 'oyunhaber_scripts' );
  * Custom Post Types registration.
  */
 require get_template_directory() . '/inc/custom-post-types.php';
+
+/**
+ * Dynamic Platform Colors
+ * 
+ * Changes the accent color and tints the whole page based on the current platform.
+ */
+function oyunhaber_dynamic_platform_colors() {
+    $current_color = '';
+    
+    // Platform Colors Definition
+    // Format: 'slug' => 'color_hex'
+    $platform_colors = array(
+        'genel'       => '#9b59b6', // Purple for General
+        'pc'          => '#0abde3', // Cyan/Blue
+        'playstation' => '#003791', // Dark Blue
+        'xbox'        => '#107c10', // Green
+        'nintendo'    => '#e60012', // Red
+        'mobil'       => '#ff9f43', // Orange
+    );
+
+    // 1. Is it a Platform Archive Page?
+    if ( is_tax( 'platform' ) ) {
+        $term = get_queried_object();
+        if ( isset( $term->slug ) && isset( $platform_colors[ $term->slug ] ) ) {
+            $current_color = $platform_colors[ $term->slug ];
+        }
+    } 
+    // 2. Is it a Single Post?
+    elseif ( is_single() ) {
+        $terms = get_the_terms( get_the_ID(), 'platform' );
+        if ( $terms && ! is_wp_error( $terms ) ) {
+            $term = reset( $terms ); 
+            if ( isset( $term->slug ) && isset( $platform_colors[ $term->slug ] ) ) {
+                $current_color = $platform_colors[ $term->slug ];
+            }
+        }
+    }
+
+    if ( $current_color ) {
+        // Convert Hex to RGB for CSS rgba() usage
+        list($r, $g, $b) = sscanf($current_color, "#%02x%02x%02x");
+        $rgb_val = "$r, $g, $b";
+
+        ?>
+        <style type="text/css">
+            :root {
+                --accent-color: <?php echo esc_attr( $current_color ); ?> !important;
+                --accent-hover: rgba(<?php echo $rgb_val; ?>, 0.8) !important;
+                --platform-rgb: <?php echo $rgb_val; ?>;
+            }
+
+            /* --- Immersive Background Tinting --- */
+            
+            /* Body Gradient Background */
+            body {
+                background-color: #0d0d0d; /* Darker base */
+                background-image: 
+                    radial-gradient(circle at 50% 0%, rgba(var(--platform-rgb), 0.25) 0%, transparent 60%),
+                    linear-gradient(to bottom, rgba(var(--platform-rgb), 0.05) 0%, transparent 100%);
+                background-attachment: fixed;
+            }
+
+            /* Tinted Containers */
+            .site-header, 
+            .site-footer, 
+            .card, 
+            .post, 
+            .single-hero,
+            .comments-area,
+            .comment-respond,
+            .widget {
+                background-color: rgba(var(--platform-rgb), 0.08) !important;
+                border-color: rgba(var(--platform-rgb), 0.2) !important;
+            }
+
+            /* Inner Elements darker tint */
+            .header-search form, 
+            .card-image, 
+            .comment-body, 
+            .platform-nav-bar,
+            .cat-links a, 
+            .tags-links a {
+                background-color: rgba(var(--platform-rgb), 0.15) !important;
+            }
+
+            /* Text Selection */
+            ::selection {
+                background: var(--accent-color);
+                color: #fff;
+            }
+            
+            /* Scrollbar Thumb */
+            ::-webkit-scrollbar-thumb {
+                background-color: var(--accent-color);
+            }
+        </style>
+        <?php
+    }
+}
+add_action( 'wp_head', 'oyunhaber_dynamic_platform_colors' );

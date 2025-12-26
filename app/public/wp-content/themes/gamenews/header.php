@@ -27,13 +27,25 @@
 			</div><!-- .site-branding -->
 
 			<nav id="site-navigation" class="main-navigation">
-				<?php
-				wp_nav_menu( array(
-					'theme_location' => 'primary',
-					'menu_id'        => 'primary-menu',
-                    'container'      => false, // Remove container div to easier flex control
-				) );
-				?>
+                <ul>
+                    <?php
+                    // Platformları Ana Menü Olarak Listele
+                    $terms = get_terms( array(
+                        'taxonomy'   => 'platform',
+                        'hide_empty' => false,
+                    ) );
+
+                    if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+                        foreach ( $terms as $term ) {
+                            $term_link = get_term_link( $term );
+                            if ( is_wp_error( $term_link ) ) {
+                                continue;
+                            }
+                            echo '<li><a href="' . esc_url( $term_link ) . '">' . esc_html( $term->name ) . '</a></li>';
+                        }
+                    }
+                    ?>
+                </ul>
 			</nav><!-- #site-navigation -->
 
             <div class="header-actions">
