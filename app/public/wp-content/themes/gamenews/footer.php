@@ -57,6 +57,33 @@
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 
+<button id="scroll-to-top" title="<?php esc_attr_e('Yukarı Çık', 'oyunhaber'); ?>">
+    <span class="dashicons dashicons-arrow-up-alt2"></span>
+</button>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var scrollButton = document.getElementById('scroll-to-top');
+    
+    window.onscroll = function() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            scrollButton.style.opacity = "1";
+            scrollButton.style.visibility = "visible";
+        } else {
+            scrollButton.style.opacity = "0";
+            scrollButton.style.visibility = "hidden";
+        }
+    };
+
+    scrollButton.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+});
+</script>
+
 <?php wp_footer(); ?>
 
 </body>
