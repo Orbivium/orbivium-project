@@ -114,6 +114,10 @@ add_action( 'widgets_init', 'oyunhaber_widgets_init' );
  * Enqueue scripts and styles.
  */
 function oyunhaber_scripts() {
+    // Google Fonts for Platforms
+    // Mobil: Fredoka, PC/Genel: Exo 2, PlayStation: Saira, Xbox: Roboto, Nintendo: Nunito
+    wp_enqueue_style( 'oyunhaber-fonts', 'https://fonts.googleapis.com/css2?family=Anton&family=Exo+2:wght@500;700&family=Fredoka:wght@400;600&family=Nunito:wght@700&family=Roboto:wght@500;700&family=Saira:wght@500;700&display=swap', array(), null );
+
 	wp_enqueue_style( 'oyunhaber-style', get_stylesheet_uri() );
     wp_enqueue_style( 'dashicons' );
 }
@@ -123,6 +127,7 @@ add_action( 'wp_enqueue_scripts', 'oyunhaber_scripts' );
  * Custom Post Types registration.
  */
 require get_template_directory() . '/inc/custom-post-types.php';
+require get_template_directory() . '/inc/demo-data.php';
 
 /**
  * Dynamic Platform Colors
@@ -223,3 +228,245 @@ function oyunhaber_dynamic_platform_colors() {
     }
 }
 add_action( 'wp_head', 'oyunhaber_dynamic_platform_colors' );
+
+/**
+ * Custom Login Page Styles
+ */
+/**
+ * Custom Login Page Styles
+ */
+function oyunhaber_login_styles() {
+    ?>
+    <style type="text/css">
+        body.login {
+            background-color: #0d0d0d !important;
+            color: #e0e0e0;
+            font-family: 'Segoe UI', 'Roboto', Helvetica, Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        
+        /* Logo Styling */
+        body.login div#login h1 a {
+            background-image: none !important;
+            color: #fff;
+            font-size: 0 !important; /* Hide original text */
+            width: auto;
+            background-size: contain;
+            height: auto;
+            line-height: 1;
+            margin-bottom: 30px;
+            text-indent: 0;
+            display: block;
+            text-align: center;
+        }
+
+        /* Show the text "ORBI" cleanly via pseudo-element */
+        body.login div#login h1 a::before {
+            content: 'ORBI';
+            font-size: 3rem; /* Visible size */
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            color: #ff4757;
+            text-shadow: 0 0 20px rgba(255, 71, 87, 0.4);
+        }
+        
+        /* Container */
+        #login {
+            width: 400px;
+            padding: 0;
+            margin: auto;
+        }
+
+        /* Form Card */
+        .login form {
+            background: #1e1e1e !important;
+            border: 1px solid #333 !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
+            border-radius: 16px;
+            padding: 40px 30px !important;
+            margin-top: 0 !important;
+        }
+
+        .login label {
+            color: #b0b0b0;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Inputs */
+        .login input[type="text"],
+        .login input[type="password"],
+        .login input[type="email"] {
+            background: #2d2d2d !important;
+            border: 1px solid #444 !important;
+            color: #fff !important;
+            border-radius: 8px !important;
+            padding: 12px 15px !important;
+            margin-bottom: 20px !important;
+            box-shadow: none !important;
+            font-size: 1rem !important;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .login input[type="text"]:focus,
+        .login input[type="password"]:focus,
+        .login input[type="email"]:focus {
+            border-color: #ff4757 !important;
+            background: #333 !important;
+            box-shadow: 0 0 0 2px rgba(255, 71, 87, 0.2) !important;
+        }
+
+        /* Checkbox */
+        .login .forgetmenot {
+            float: none !important;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .login input[type="checkbox"] {
+            background: #2d2d2d !important;
+            border-color: #444 !important;
+            border-radius: 4px !important;
+        }
+
+        .login input[type="checkbox"]:checked::before {
+            color: #ff4757 !important;
+        }
+
+        /* Button */
+        .wp-core-ui .button-primary {
+            background: #ff4757 !important;
+            border-color: #ff4757 !important;
+            text-shadow: none !important;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4) !important;
+            color: #fff !important;
+            border-radius: 30px !important;
+            padding: 10px 0 !important;
+            font-size: 1rem !important;
+            font-weight: 800 !important;
+            text-transform: uppercase !important;
+            transition: all 0.3s ease !important;
+            width: 100% !important;
+            float: none !important;
+            margin-top: 10px !important;
+            height: auto !important;
+            line-height: normal !important;
+        }
+
+        .wp-core-ui .button-primary:hover {
+            background: #ff6b81 !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 71, 87, 0.6) !important;
+        }
+
+        /* Links */
+        .login #nav, .login #backtoblog {
+            padding: 0 !important;
+            margin: 15px 0 0 0 !important;
+            text-align: center;
+        }
+
+        .login #nav a, .login #backtoblog a {
+            color: #666 !important;
+            transition: color 0.3s;
+            text-decoration: none !important;
+            font-size: 0.9rem !important;
+        }
+
+        .login #nav a:hover, .login #backtoblog a:hover {
+            color: #ff4757 !important;
+        }
+        
+        /* Messages (Fixing the white box issue) */
+        .login .message, 
+        .login .success, 
+        .login #login_error,
+        .login .notice {
+            background-color: #1e1e1e !important;
+            border: 1px solid #333 !important;
+            border-left: 4px solid #ff4757 !important; /* Default Accent */
+            color: #e0e0e0 !important;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2) !important;
+            padding: 15px 20px !important;
+            margin-bottom: 20px !important;
+            border-radius: 8px !important;
+        }
+
+        .login .message {
+            border-left-color: #0abde3 !important; /* Info Blue */
+        }
+
+        .login .success {
+            border-left-color: #107c10 !important; /* Success Green */
+        }
+
+        .login #login_error {
+            border-left-color: #ff4757 !important; /* Error Red */
+        }
+        
+        /* Links inside messages */
+        .login .message a,
+        .login .success a,
+        .login #login_error a {
+            color: #ff4757 !important;
+            text-decoration: underline;
+        }
+
+        /* Language Switcher */
+        .language-switcher { display: none !important; }
+        
+        /* Dashicons override for password visibility */
+        .login .dashicons-visibility { color: #888; }
+    </style>
+    <?php
+}
+add_action( 'login_enqueue_scripts', 'oyunhaber_login_styles' );
+
+/**
+ * Change Login Logo URL
+ */
+function oyunhaber_login_logo_url() {
+    return home_url();
+}
+add_filter( 'login_headerurl', 'oyunhaber_login_logo_url' );
+
+function oyunhaber_login_logo_url_title() {
+    return get_bloginfo( 'name' );
+}
+add_filter( 'login_headertitle', 'oyunhaber_login_logo_url_title' );
+
+/**
+ * Robust Page Creation Check on Init (Frontend)
+ * This ensures the 'profil' page exists for the user immediately.
+ */
+function oyunhaber_check_pages_frontend() {
+    // Only run if not an admin page and if the page doesn't exist
+    if ( ! is_admin() && ! get_page_by_path( 'profil' ) ) {
+        $page_id = wp_insert_post( array(
+            'post_title'    => 'Profil',
+            'post_name'     => 'profil',
+            'post_content'  => '',
+            'post_status'   => 'publish',
+            'post_type'     => 'page',
+            'page_template' => 'page-profil.php'
+        ) );
+        
+        if ( $page_id && ! is_wp_error( $page_id ) ) {
+            update_post_meta( $page_id, '_wp_page_template', 'page-profil.php' );
+            
+            // Hard flush rules
+            flush_rewrite_rules();
+        }
+    }
+}
+add_action( 'init', 'oyunhaber_check_pages_frontend' );

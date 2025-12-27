@@ -25,7 +25,7 @@ get_header();
                             if ( $platforms && ! is_wp_error( $platforms ) ) : 
                                 echo '<div class="single-platforms">';
                                 foreach ( $platforms as $platform ) {
-                                    echo '<span class="platform-badge">' . esc_html( $platform->name ) . '</span> ';
+                                    echo '<span class="platform-badge platform-' . esc_attr( $platform->slug ) . '">' . esc_html( $platform->name ) . '</span> ';
                                 }
                                 echo '</div>';
                             endif;

@@ -17,7 +17,7 @@ $platforms = get_the_terms( get_the_ID(), 'platform' );
             <?php if ( $platforms && ! is_wp_error( $platforms ) ) : ?>
                 <div class="card-platforms">
                     <?php foreach ( $platforms as $platform ) : ?>
-                        <span class="platform-badge"><?php echo esc_html( $platform->name ); ?></span>
+                        <span class="platform-badge platform-<?php echo esc_attr( $platform->slug ); ?>"><?php echo esc_html( $platform->name ); ?></span>
                     <?php endforeach; ?>
                 </div>
             <?php endif; ?>
