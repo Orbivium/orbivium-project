@@ -117,12 +117,18 @@ function oyunhaber_insert_default_terms() {
         return;
     }
 
-    $terms = array( 'Genel', 'PC', 'PlayStation', 'Xbox', 'Nintendo', 'Mobil' );
+    $terms = array( 'Genel', 'PC', 'PlayStation', 'XBOX', 'Nintendo', 'Mobil' );
 
     foreach ( $terms as $term ) {
         if ( ! term_exists( $term, $taxonomy ) ) {
             wp_insert_term( $term, $taxonomy );
         }
+    }
+
+    // Force update XBOX capitalization if it exists as 'Xbox'
+    $xbox = get_term_by( 'slug', 'xbox', $taxonomy );
+    if ( $xbox && $xbox->name !== 'XBOX' ) {
+        wp_update_term( $xbox->term_id, $taxonomy, array( 'name' => 'XBOX' ) );
     }
 }
 add_action( 'admin_init', 'oyunhaber_insert_default_terms' );
