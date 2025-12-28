@@ -128,6 +128,7 @@ add_action( 'wp_enqueue_scripts', 'oyunhaber_scripts' );
  */
 require get_template_directory() . '/inc/custom-post-types.php';
 require get_template_directory() . '/inc/demo-data.php';
+require get_template_directory() . '/inc/moderator-role.php';
 
 /**
  * Dynamic Platform Colors

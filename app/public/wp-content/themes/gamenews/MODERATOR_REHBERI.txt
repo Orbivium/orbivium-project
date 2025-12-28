@@ -1,0 +1,38 @@
+=== OYUNHABER MODERATÖR REHBERİ ===
+
+Bu rehber, OyunHaber platformunda içerik yönetimi yapan moderatörler için hazırlanmıştır. Kaliteli ve düzenli bir site görünümü için lütfen aşağıdaki kurallara dikkat ediniz.
+
+--- 1. GÖRSEL STANDARTLARI (ÖNEMLİ) ---
+
+Haber ve İnceleme kartlarının şık ve düzenli görünmesi için öne çıkarılmış görsellerde (Kapak Fotoğrafları) aşağıdaki standartlara uyunuz:
+
+*   **İdeal Boyut:** 800px (Genişlik) x 440px (Yükseklik)
+*   **En Boy Oranı:** 16:9 (Geniş Ekran)
+*   **Desteklenen Diğer Boyutlar:** 1920x1080, 1280x720.
+*   **Uyarı:** Görseller sistem tarafından otomatik olarak "ortalanarak" kutuya sığdırılır. Bu yüzden görselin ana konusunun (örneğin bir karakter yüzü veya logo) tam ortada olmasına özen gösterin. Kenarlarda kalan kısımlar bazı ekranlarda kırpılabilir.
+*   **Metin İçeren Görseller:** "COOL FIT" vb. yazı içeren bannerlar kullanıyorsanız, yazının görselin tam ortasında olduğundan ve kenarlara çok yapışık olmadığından emin olun.
+
+--- 2. İÇERİK YAYINLAMA KURALLARI ---
+
+*   **Başlıklar:** İlgi çekici ancak yanıltıcı olmayan (Clickbait olmayan) başlıklar kullanın. Başlıkların çok uzun olmamasına dikkat edin (İdeal: 50-70 karakter).
+*   **Kategoriler:** Her içeriğin mutlaka doğru "Platform" (PC, PlayStation, Xbox vb.) kategorisine eklendiğinden emin olun. Kategori seçilmezse içerik "Genel" sekmesine düşebilir veya kaybolabilir.
+*   **Özet (Excerpt):** Her yazı için kısa, vurucu bir özet girin. Bu özet ana sayfada kartların altında görünür. Eğer girilmezse sistem otomatik olarak ilk paragrafı çeker ki bu bazen kötü görünebilir.
+
+--- 3. YAZI İÇİ GÖRSELLER ---
+
+*   **Ortalama:** Yazı içine eklediğiniz görseller varsayılan olarak ortalanır.
+*   **Boyut:** Yazı içine çok büyük boyutlu (4MB+) görseller yüklemekten kaçının, sayfayı yavaşlatır. Mümkünse görselleri yüklemeden önce sıkıştırın (TinyPNG vb. kullanarak).
+
+--- 4. YORUM YÖNETİMİ ---
+
+*   Spam, hakaret veya reklam içeren yorumları "Onaylama" veya "Çöp" kutusuna taşıyın.
+*   Eleştiri içeren ancak hakaret barındırmayan yorumlara dokunmayın, topluluk tartışması etkileşimi artırır.
+*   Sadece emin olduğunuz yorumları onaylayın.
+
+--- 5. ERİŞİM VE GÜVENLİK ---
+
+*   Paneliniz sadece içerik yönetimi içindir. Tema ayarları, eklentiler veya kod düzenlemeleri yapma yetkiniz kısıtlanmıştır.
+*   Admin panelinde gördüğünüz "Moderatör Paneli" üzerinden bekleyen işlerinizi hızlıca takip edebilirsiniz.
+*   Şüpheli bir durum fark ederseniz (hatalı görünen bir sayfa vb.) doğrudan site yöneticisine bildirin.
+
+İyi çalışmalar!
