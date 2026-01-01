@@ -87,8 +87,6 @@ $platform_query = new WP_Query( $custom_query_args );
         $slider_args = array(
             'post_type'      => array('news', 'videos', 'esports'),
             'posts_per_page' => 10,
-            'meta_key'       => '_oyunhaber_is_platform_featured',
-            'meta_value'     => '1',
             'tax_query'      => array(
                 array(
                     'taxonomy' => 'platform',
@@ -96,6 +94,31 @@ $platform_query = new WP_Query( $custom_query_args );
                     'terms'    => $term->slug,
                 ),
             ),
+            'meta_query'     => array(
+                'relation' => 'AND',
+                array(
+                    'key'   => '_oyunhaber_is_platform_featured',
+                    'value' => '1'
+                ),
+                array(
+                    'relation' => 'OR',
+                    array(
+                        'key'     => '_oyunhaber_featured_expiry',
+                        'compare' => 'NOT EXISTS'
+                    ),
+                    array(
+                        'key'     => '_oyunhaber_featured_expiry',
+                        'value'   => '',
+                        'compare' => '='
+                    ),
+                    array(
+                        'key'     => '_oyunhaber_featured_expiry',
+                        'value'   => date('Y-m-d'),
+                        'compare' => '>=',
+                        'type'    => 'DATE'
+                    )
+                )
+            )
         );
         $slider_query = new WP_Query($slider_args);
 

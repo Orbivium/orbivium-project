@@ -202,3 +202,15 @@ Stack trace:
 [01-Jan-2026 17:56:23 UTC] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\activity-log.php on line 362
 [01-Jan-2026 17:56:23 UTC] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\activity-log.php on line 362
 [01-Jan-2026 17:56:23 UTC] PHP Parse error:  syntax error, unexpected token "<" in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\activity-log.php on line 362
+[01-Jan-2026 22:33:26 UTC] PHP Warning:  Attempt to read property "labels" on null in C:\Users\ferat\Local Sites\orbi\app\public\wp-admin\includes\class-wp-comments-list-table.php on line 1106
+[01-Jan-2026 22:33:26 UTC] PHP Warning:  Attempt to read property "view_item" on null in C:\Users\ferat\Local Sites\orbi\app\public\wp-admin\includes\class-wp-comments-list-table.php on line 1106
+[01-Jan-2026 22:33:26 UTC] PHP Warning:  Attempt to read property "labels" on null in C:\Users\ferat\Local Sites\orbi\app\public\wp-admin\includes\class-wp-comments-list-table.php on line 1106
+[01-Jan-2026 22:33:26 UTC] PHP Warning:  Attempt to read property "view_item" on null in C:\Users\ferat\Local Sites\orbi\app\public\wp-admin\includes\class-wp-comments-list-table.php on line 1106
+[01-Jan-2026 23:05:38 UTC] PHP Parse error:  Unmatched '}' in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\custom-post-types.php on line 154
+[01-Jan-2026 23:05:38 UTC] PHP Warning:  Trying to access array offset on value of type bool in C:\Users\ferat\Local Sites\orbi\app\public\wp-includes\class-wp-recovery-mode-email-service.php on line 367
+[01-Jan-2026 23:05:38 UTC] PHP Warning:  Trying to access array offset on value of type bool in C:\Users\ferat\Local Sites\orbi\app\public\wp-includes\class-wp-recovery-mode-email-service.php on line 368
+[01-Jan-2026 23:05:40 UTC] PHP Parse error:  Unmatched '}' in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\custom-post-types.php on line 154
+[01-Jan-2026 23:05:40 UTC] PHP Parse error:  Unmatched '}' in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\custom-post-types.php on line 154
+[01-Jan-2026 23:05:44 UTC] PHP Parse error:  Unmatched '}' in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\custom-post-types.php on line 154
+[01-Jan-2026 23:05:44 UTC] PHP Parse error:  Unmatched '}' in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\custom-post-types.php on line 154
+[01-Jan-2026 23:05:44 UTC] PHP Parse error:  Unmatched '}' in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\custom-post-types.php on line 154

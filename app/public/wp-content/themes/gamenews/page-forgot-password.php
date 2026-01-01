@@ -10,29 +10,6 @@ if ( is_user_logged_in() ) {
     exit;
 }
 
-$message = '';
-$msg_type = ''; // error or success
-
-if ( $_SERVER['REQUEST_METHOD'] == 'POST' && isset( $_POST['user_login'] ) ) {
-    $login = trim($_POST['user_login']);
-    
-    if ( empty( $login ) ) {
-        $message = 'Lütfen kullanıcı adı veya e-posta adresinizi girin.';
-        $msg_type = 'error';
-    } else {
-        // WordPress core function to handle lost password logic
-        $errors = retrieve_password();
-        
-        if ( is_wp_error( $errors ) ) {
-            $message = $errors->get_error_message();
-            $msg_type = 'error';
-        } else {
-            $message = 'E-posta adresinize şifre sıfırlama bağlantısı gönderildi. Lütfen gelen kutunuzu (ve spam klasörünü) kontrol edin.';
-            $msg_type = 'success';
-        }
-    }
-}
-
 get_header(); 
 ?>
 
@@ -44,25 +21,81 @@ get_header();
             <p>Hesabınıza erişimi kaybettiyseniz endişelenmeyin. Aşağıdaki kutucuğa kayıtlı e-posta adresinizi veya kullanıcı adınızı yazın.</p>
         </div>
 
-        <?php if ( $message ) : ?>
-            <div class="msg-box <?php echo $msg_type; ?>"><?php echo esc_html( $message ); ?></div>
-        <?php endif; ?>
+        <!-- Dynamic Message Box -->
+        <div id="auth-msg" class="msg-box" style="display:none;"></div>
 
-        <form method="post" class="auth-form">
+        <form id="forgot-password-form" class="auth-form" onsubmit="return false;">
             <div class="form-group">
                 <label for="user_login">Kullanıcı Adı veya E-Posta</label>
                 <input type="text" name="user_login" id="user_login" required placeholder="ornek@email.com">
             </div>
 
-            <!-- Hook for WP to handle specific actions if needed, though retrieve_password uses $_POST directly -->
-            <input type="hidden" name="redirect_to" value="<?php echo esc_attr( $_SERVER['REQUEST_URI'] ); ?>?checkemail=confirm" />
-
-            <button type="submit" class="btn-auth-submit">Şifre Sıfırla</button>
+            <button type="submit" class="btn-auth-submit" id="resetBtn">
+                <span class="btn-text">Şifre Sıfırla</span>
+                <span class="spinner-border"></span>
+            </button>
 
             <div class="auth-links">
                 <a href="<?php echo home_url('/giris-yap/'); ?>" class="back-link"><span class="dashicons dashicons-arrow-left-alt2"></span> Giriş Yap'a Dön</a>
             </div>
         </form>
+
+        <script>
+            document.getElementById('forgot-password-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                var loginInput = document.getElementById('user_login').value;
+                var btn = document.getElementById('resetBtn');
+                var msgBox = document.getElementById('auth-msg');
+
+                // UI Reset
+                msgBox.style.display = 'none';
+                msgBox.className = 'msg-box';
+                
+                // Loading State
+                btn.disabled = true;
+                btn.classList.add('loading');
+                btn.querySelector('.btn-text').textContent = 'Gönderiliyor...';
+
+                // AJAX Request
+                var formData = new FormData();
+                formData.append('action', 'oyunhaber_forgot_pass');
+                formData.append('user_login', loginInput);
+
+                fetch('<?php echo admin_url('admin-ajax.php'); ?>', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    msgBox.style.display = 'block';
+                    if (data.success) {
+                        msgBox.classList.add('success');
+                        msgBox.textContent = data.data.message;
+                        // İşlem başarılıysa input'u temizle
+                        document.getElementById('user_login').value = '';
+                        btn.querySelector('.btn-text').textContent = 'Gönderildi';
+                    } else {
+                        msgBox.classList.add('error');
+                        msgBox.textContent = data.data.message || 'Bir hata oluştu.';
+                        // Reset button
+                        btn.disabled = false;
+                        btn.classList.remove('loading');
+                        btn.querySelector('.btn-text').textContent = 'Şifre Sıfırla';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    msgBox.style.display = 'block';
+                    msgBox.classList.add('error');
+                    msgBox.textContent = 'Sunucuyla iletişim kurulurken bir hata oluştu.';
+                    
+                    btn.disabled = false;
+                    btn.classList.remove('loading');
+                    btn.querySelector('.btn-text').textContent = 'Şifre Sıfırla';
+                });
+            });
+        </script>
 
     </div>
 </div>
@@ -133,9 +166,34 @@ get_header();
         border-radius: 10px; border: none; cursor: pointer;
         background: linear-gradient(135deg, var(--auth-accent), #ef4444);
         color: #fff; margin-bottom: 20px;
-        transition: transform 0.2s;
+        transition: transform 0.2s, opacity 0.2s;
+        display: flex; align-items: center; justify-content: center; gap: 10px;
     }
-    .btn-auth-submit:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(225,29,72,0.3); }
+    .btn-auth-submit:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(225,29,72,0.3); }
+    
+    .btn-auth-submit:disabled, .btn-auth-submit.loading {
+        opacity: 0.7;
+        cursor: not-allowed;
+        transform: none !important;
+    }
+    
+    .spinner-border {
+        display: none;
+        width: 18px;
+        height: 18px;
+        border: 2px solid rgba(255,255,255,0.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 0.8s linear infinite;
+    }
+    
+    .btn-auth-submit.loading .spinner-border {
+        display: inline-block;
+    }
+    
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
 
     .auth-links { text-align: center; }
     .back-link { color: var(--auth-text-muted); text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 5px; transition: 0.2s; }

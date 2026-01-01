@@ -9,7 +9,25 @@ $slider_query = new WP_Query( array(
     'post_type'      => 'slider',
     'posts_per_page' => 5,
     'orderby'        => 'menu_order date',
-    'order'          => 'ASC'
+    'order'          => 'ASC',
+    'meta_query'     => array(
+        'relation' => 'OR',
+        array(
+            'key'     => '_oyunhaber_slider_expiry',
+            'compare' => 'NOT EXISTS'
+        ),
+        array(
+            'key'     => '_oyunhaber_slider_expiry',
+            'value'   => '',
+            'compare' => '='
+        ),
+        array(
+            'key'     => '_oyunhaber_slider_expiry',
+            'value'   => date('Y-m-d'),
+            'compare' => '>=',
+            'type'    => 'DATE'
+        )
+    )
 ) );
 
 if ( $slider_query->have_posts() ) :

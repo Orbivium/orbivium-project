@@ -152,6 +152,60 @@ if ( ! function_exists( 'oyunhaber_register_cpts' ) ) :
 	}
 endif;
 add_action( 'init', 'oyunhaber_register_cpts' );
+function oyunhaber_add_slider_meta_box() {
+    add_meta_box(
+        'oyunhaber_slider_expiry_box',
+        'Yayınlanma Süresi Ayarları',
+        'oyunhaber_slider_expiry_html',
+        'slider',
+        'side',
+        'default'
+    );
+}
+add_action( 'add_meta_boxes', 'oyunhaber_add_slider_meta_box' );
+
+function oyunhaber_slider_expiry_html( $post ) {
+    $expiry_date = get_post_meta( $post->ID, '_oyunhaber_slider_expiry', true );
+    ?>
+    <div>
+        <label style="display:block; font-weight:600; margin-bottom:5px;">Yayından Kaldırılma Tarihi (Opsiyonel)</label>
+        <p class="description" style="margin-bottom:8px;">Bu tarihten sonra slider otomatik olarak gizlenir. Boş bırakırsanız süresiz kalır.</p>
+        
+        <input type="date" name="oyunhaber_slider_expiry" id="oyunhaber_slider_expiry" value="<?php echo esc_attr($expiry_date); ?>" style="width:100%; margin-bottom:10px;">
+        
+        <div style="display:flex; gap:5px; flex-wrap:wrap;">
+            <button type="button" class="button button-small date-preset-slider" data-days="2">+2 Gün</button>
+            <button type="button" class="button button-small date-preset-slider" data-days="7">+1 Hafta</button>
+            <button type="button" class="button button-small date-preset-slider" data-days="30">+1 Ay</button>
+            <button type="button" class="button button-small date-preset-slider" data-clear="true" style="color:#b32d2e;">Süresiz</button>
+        </div>
+
+        <script>
+            jQuery(document).ready(function($){
+                $('.date-preset-slider').on('click', function(){
+                    if($(this).data('clear')) {
+                        $('#oyunhaber_slider_expiry').val('');
+                        return;
+                    }
+                    var days = $(this).data('days');
+                    var date = new Date();
+                    date.setDate(date.getDate() + parseInt(days));
+                    var dateString = date.toISOString().split('T')[0];
+                    $('#oyunhaber_slider_expiry').val(dateString);
+                });
+            });
+        </script>
+    </div>
+    <?php
+}
+
+function oyunhaber_save_slider_meta_box( $post_id ) {
+    if ( isset( $_POST['oyunhaber_slider_expiry'] ) ) {
+        update_post_meta( $post_id, '_oyunhaber_slider_expiry', sanitize_text_field( $_POST['oyunhaber_slider_expiry'] ) );
+    }
+}
+add_action( 'save_post', 'oyunhaber_save_slider_meta_box' );
+
 
 // Populate Default Terms
 // Populate Default Terms

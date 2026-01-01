@@ -505,8 +505,12 @@ add_filter( 'login_headertitle', 'oyunhaber_login_logo_url_title' );
  * Robust Page Creation Check on Init (Frontend)
  * This ensures the 'profil' page exists for the user immediately.
  */
+/**
+ * Robust Page Creation Check on Init (Frontend)
+ * This ensures the 'profil' and 'sifre-sifirla' pages exist immediately.
+ */
 function oyunhaber_check_pages_frontend() {
-    // Only run if not an admin page and if the page doesn't exist
+    // Profil Sayfası
     if ( ! is_admin() && ! get_page_by_path( 'profil' ) ) {
         $page_id = wp_insert_post( array(
             'post_title'    => 'Profil',
@@ -516,13 +520,128 @@ function oyunhaber_check_pages_frontend() {
             'post_type'     => 'page',
             'page_template' => 'page-profil.php'
         ) );
-        
         if ( $page_id && ! is_wp_error( $page_id ) ) {
             update_post_meta( $page_id, '_wp_page_template', 'page-profil.php' );
-            
-            // Hard flush rules
-            flush_rewrite_rules();
+        }
+    }
+
+    // Şifre Sıfırlama Sayfası
+    if ( ! is_admin() && ! get_page_by_path( 'sifre-sifirla' ) ) {
+        $page_id = wp_insert_post( array(
+            'post_title'    => 'Şifre Sıfırlama',
+            'post_name'     => 'sifre-sifirla',
+            'post_content'  => '',
+            'post_status'   => 'publish',
+            'post_type'     => 'page',
+            'page_template' => 'page-reset-password.php'
+        ) );
+        if ( $page_id && ! is_wp_error( $page_id ) ) {
+            update_post_meta( $page_id, '_wp_page_template', 'page-reset-password.php' );
         }
     }
 }
 add_action( 'init', 'oyunhaber_check_pages_frontend' );
+
+/**
+ * Set Email Content Type to HTML
+ */
+add_filter( 'wp_mail_content_type', function() {
+    return 'text/html';
+});
+
+/**
+ * Customize Password Reset URL in Emails with Rich HTML Template
+ */
+add_filter( 'retrieve_password_message', function( $message, $key, $user_login, $user_data ) {
+    $custom_url = home_url( "/sifre-sifirla/?key=$key&login=" . rawurlencode( $user_login ) );
+    $site_name = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
+    $year = date('Y');
+
+    // HTML Email Template
+    $html_message = '
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Şifre Sıfırlama</title>
+    </head>
+    <body style="margin: 0; padding: 0; background-color: #0B0F14; font-family: \'Segoe UI\', Helvetica, Arial, sans-serif;">
+        <div style="background-color: #0B0F14; padding: 40px 20px;">
+            <div style="max-width: 500px; margin: 0 auto; background-color: #151920; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05);">
+                
+                <!-- Header -->
+                <div style="background: linear-gradient(135deg, #E11D48 0%, #be123c 100%); padding: 30px; text-align: center;">
+                    <h1 style="margin: 0; color: #ffffff; font-size: 28px; font-weight: 900; letter-spacing: -1px; text-transform: uppercase;">ORBI</h1>
+                </div>
+
+                <!-- Content -->
+                <div style="padding: 40px;">
+                    <h2 style="margin-top: 0; color: #ffffff; font-size: 20px; font-weight: 700; text-align: center; margin-bottom: 20px;">Şifrenizi mi Unuttunuz?</h2>
+                    
+                    <p style="font-size: 15px; color: #94a3b8; line-height: 1.6; margin-bottom: 20px; text-align: center;">
+                        Merhaba <strong>' . esc_html($user_login) . '</strong>,<br>
+                        Hesabınız için bir şifre sıfırlama talebi aldık. Endişelenmeyin, aşağıdaki butona tıklayarak hemen yeni bir şifre belirleyebilirsiniz.
+                    </p>
+
+                    <div style="text-align: center; margin: 30px 0;">
+                        <a href="' . esc_url($custom_url) . '" style="background-color: #E11D48; color: #ffffff; text-decoration: none; padding: 14px 32px; border-radius: 50px; font-weight: 700; font-size: 16px; display: inline-block; box-shadow: 0 4px 15px rgba(225, 29, 72, 0.4);">
+                            Şifremi Sıfırla
+                        </a>
+                    </div>
+
+                    <p style="font-size: 13px; color: #64748b; margin-bottom: 0; text-align: center;">
+                        Bu işlemi siz talep etmediyseniz, bu e-postayı görmezden gelebilirsiniz. Hesabınız güvendedir.
+                    </p>
+                </div>
+
+                <!-- Footer -->
+                <div style="background-color: #11141a; padding: 20px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05);">
+                    <p style="margin: 0; font-size: 12px; color: #475569;">
+                        &copy; ' . $year . ' ' . esc_html($site_name) . '. Tüm hakları saklıdır.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
+    ';
+
+    return $html_message;
+}, 10, 4 );
+
+/**
+ * AJAX Password Reset Handler
+ * Handles the forgot password logic asynchronously to prevent page freeze.
+ */
+function oyunhaber_ajax_forgot_password() {
+    // Güvenlik kontrolü (Nonce eklenebilir ama basitlik için şimdilik atlıyoruz, istek public)
+    
+    $login = isset($_POST['user_login']) ? trim($_POST['user_login']) : '';
+    
+    if ( empty( $login ) ) {
+        wp_send_json_error( array( 'message' => 'Lütfen kullanıcı adı veya e-posta adresinizi girin.' ) );
+    }
+
+    // WP Core retrieve_password fonksiyonunu kullan
+    // Bu fonksiyon user_login alır ve başarılıysa true/void, başarısızsa WP_Error döner zannedilse de
+    // retrieve_password() aslında void/error döner ama WP 5.7+ sonrası işler değişti.
+    // En güvenlisi retrieve_password() fonksiyonunu çağırmaktır.
+    
+    // Ancak retrieve_password hata fırlatırsa yakalamalıyız veya manuel kontrol etmeliyiz.
+    // retrieve_password() 'lostpassword_post' action'ında çalışır genelde.
+    
+    $errors = retrieve_password( $login );
+
+    if ( is_wp_error( $errors ) ) {
+        $error_message = $errors->get_error_message();
+        // Hata mesajını biraz yumuşatalım
+        if ( strpos($error_message, 'email adresi bulunamadı') !== false ) {
+            $error_message = 'Bu bilgilere sahip bir kullanıcı bulunamadı.';
+        }
+        wp_send_json_error( array( 'message' => $error_message ) );
+    } else {
+        wp_send_json_success( array( 'message' => 'E-posta adresinize şifre sıfırlama bağlantısı gönderildi. Lütfen gelen kutunuzu (ve spam klasörünü) kontrol edin.' ) );
+    }
+}
+add_action( 'wp_ajax_nopriv_oyunhaber_forgot_pass', 'oyunhaber_ajax_forgot_password' );
+add_action( 'wp_ajax_oyunhaber_forgot_pass', 'oyunhaber_ajax_forgot_password' );

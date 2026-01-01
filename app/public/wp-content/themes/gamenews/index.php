@@ -11,10 +11,33 @@ get_header();
 // 1. Get Featured Posts
 $featured_query = new WP_Query(array(
     'post_type'      => array('news', 'videos', 'esports'),
-    'meta_key'       => '_oyunhaber_is_featured',
-    'meta_value'     => '1',
     'posts_per_page' => 20, // Allow up to 20 featured items for slider
-    'ignore_sticky_posts' => 1
+    'ignore_sticky_posts' => 1,
+    'meta_query'     => array(
+        'relation' => 'AND',
+        array(
+            'key'   => '_oyunhaber_is_featured',
+            'value' => '1'
+        ),
+        array(
+            'relation' => 'OR',
+            array(
+                'key'     => '_oyunhaber_featured_expiry',
+                'compare' => 'NOT EXISTS'
+            ),
+            array(
+                'key'     => '_oyunhaber_featured_expiry',
+                'value'   => '',
+                'compare' => '='
+            ),
+            array(
+                'key'     => '_oyunhaber_featured_expiry',
+                'value'   => date('Y-m-d'),
+                'compare' => '>=',
+                'type'    => 'DATE'
+            )
+        )
+    )
 ));
 
 // 2. Get Latest Posts (excluding featured to avoid duplicates)

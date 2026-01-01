@@ -1,0 +1,20 @@
+Time: 2026-01-01 22:37:11
+To: ferattas2763@gmail.com
+Subject: [orbi] Parolayı Sıfırla
+Message: 
+Birisi şu hesap için parola sıfırlama isteğinde bulundu:
+
+Site adı: orbi
+
+Kullanıcı adı: ferattas
+
+Bu e-postayı yanlışlıkla aldıysanız yok sayabilirsiniz. Herhangi bir sonucu olmaz.
+
+Parolanızı sıfırlamak için, şu adrese gidin:
+
+http://orbi.local/wp-login.php?login=ferattas&key=DtDrBeawlwhnUzKYsdhS&action=rp&wp_lang=tr_TR
+
+Bu parola sıfırlama talebi 127.0.0.1 IP adresinden geldi.
+
+--------------------------------------------------
+

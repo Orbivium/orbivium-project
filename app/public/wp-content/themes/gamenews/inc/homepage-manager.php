@@ -24,6 +24,9 @@ add_action( 'add_meta_boxes', 'oyunhaber_add_featured_meta_box' );
 function oyunhaber_featured_meta_box_html( $post ) {
     $is_home_featured = get_post_meta( $post->ID, '_oyunhaber_is_featured', true );
     $is_platform_featured = get_post_meta( $post->ID, '_oyunhaber_is_platform_featured', true );
+    
+    // Expiration Date Logic
+    $expiry_date = get_post_meta( $post->ID, '_oyunhaber_featured_expiry', true );
     ?>
     <div style="margin-bottom: 15px;">
         <label for="oyunhaber_is_featured" style="display:block; margin-bottom: 8px;">
@@ -35,6 +38,36 @@ function oyunhaber_featured_meta_box_html( $post ) {
             <input type="checkbox" name="oyunhaber_is_platform_featured" id="oyunhaber_is_platform_featured" value="1" <?php checked( $is_platform_featured, 1 ); ?> />
             <strong>Platform Manşet</strong> alanında göster (İlgili Platformun 'Tümü' sayfasında)
         </label>
+    </div>
+
+    <div style="margin-top: 15px; padding-top: 10px; border-top: 1px solid #ddd;">
+        <label style="display:block; font-weight:600; margin-bottom:5px;">Manşetten Kaldırılma Tarihi (Opsiyonel)</label>
+        <p class="description" style="margin-bottom:8px;">Belirlenen tarihten sonra otomatik olarak manşetten düşer.</p>
+        
+        <input type="date" name="oyunhaber_featured_expiry" id="oyunhaber_featured_expiry" value="<?php echo esc_attr($expiry_date); ?>" style="width:100%; margin-bottom:10px;">
+        
+        <div style="display:flex; gap:5px; flex-wrap:wrap;">
+            <button type="button" class="button button-small date-preset" data-days="2">+2 Gün</button>
+            <button type="button" class="button button-small date-preset" data-days="3">+3 Gün</button>
+            <button type="button" class="button button-small date-preset" data-days="7">+1 Hafta</button>
+            <button type="button" class="button button-small date-preset" data-clear="true" style="color:#b32d2e;">Temizle</button>
+        </div>
+
+        <script>
+            jQuery(document).ready(function($){
+                $('.date-preset').on('click', function(){
+                    if($(this).data('clear')) {
+                        $('#oyunhaber_featured_expiry').val('');
+                        return;
+                    }
+                    var days = $(this).data('days');
+                    var date = new Date();
+                    date.setDate(date.getDate() + parseInt(days));
+                    var dateString = date.toISOString().split('T')[0];
+                    $('#oyunhaber_featured_expiry').val(dateString);
+                });
+            });
+        </script>
     </div>
     <?php
 }
@@ -52,6 +85,11 @@ function oyunhaber_save_featured_meta_box( $post_id ) {
         update_post_meta( $post_id, '_oyunhaber_is_platform_featured', 1 );
     } else {
         delete_post_meta( $post_id, '_oyunhaber_is_platform_featured' );
+    }
+
+    // Save Expiry Date
+    if ( isset( $_POST['oyunhaber_featured_expiry'] ) ) {
+        update_post_meta( $post_id, '_oyunhaber_featured_expiry', sanitize_text_field( $_POST['oyunhaber_featured_expiry'] ) );
     }
 }
 add_action( 'save_post', 'oyunhaber_save_featured_meta_box' );
