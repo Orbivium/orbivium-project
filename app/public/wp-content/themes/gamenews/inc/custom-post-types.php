@@ -8,7 +8,7 @@
 if ( ! function_exists( 'oyunhaber_register_cpts' ) ) :
 	function oyunhaber_register_cpts() {
 
-		// 1. Haberler (News)
+		// 1. Haberler (News) - PARENT MENU ITEM
 		register_post_type( 'news', array(
 			'labels' => array(
 				'name'               => __( 'Haberler', 'oyunhaber' ),
@@ -21,16 +21,19 @@ if ( ! function_exists( 'oyunhaber_register_cpts' ) ) :
 				'view_item'          => __( 'Haberi Görüntüle', 'oyunhaber' ),
 				'search_items'       => __( 'Haber Ara', 'oyunhaber' ),
 				'not_found'          => __( 'Haber Bulunamadı', 'oyunhaber' ),
+				'menu_name'          => __( 'İçerik Yönetimi', 'oyunhaber' ), // Renamed Parent
 			),
 			'public'        => true,
 			'has_archive'   => true,
 			'show_in_rest'  => true, // Block Editor support
-			'menu_icon'     => 'dashicons-megaphone',
+			'menu_icon'     => 'dashicons-admin-post', // Generic icon
+			'menu_position' => 4, // High priority
 			'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments', 'author' ),
+			'taxonomies'    => array( 'category', 'post_tag' ), 
 			'rewrite'       => array( 'slug' => 'haberler' ), // Custom slug
 		) );
 
-		// 2. İncelemeler (Reviews)
+		// 2. İncelemeler (Reviews) - SUBMENU OF NEWS
 		register_post_type( 'reviews', array(
 			'labels' => array(
 				'name'               => __( 'İncelemeler', 'oyunhaber' ),
@@ -42,7 +45,9 @@ if ( ! function_exists( 'oyunhaber_register_cpts' ) ) :
 			'has_archive'   => true,
 			'show_in_rest'  => true,
 			'menu_icon'     => 'dashicons-star-half',
-			'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments', 'custom-fields' ),
+            'show_in_menu'  => 'edit.php?post_type=news', // NESTED under News
+			'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments', 'custom-fields', 'author' ),
+			'taxonomies'    => array( 'category', 'post_tag' ),
 			'rewrite'       => array( 'slug' => 'incelemeler' ),
 		) );
 
@@ -58,7 +63,8 @@ if ( ! function_exists( 'oyunhaber_register_cpts' ) ) :
 			'has_archive'   => true,
 			'show_in_rest'  => true,
 			'menu_icon'     => 'dashicons-video-alt3',
-			'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments' ),
+			'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments', 'author' ),
+			'taxonomies'    => array( 'category', 'post_tag' ),
 			'rewrite'       => array( 'slug' => 'videolar' ),
 		) );
 
@@ -74,7 +80,8 @@ if ( ! function_exists( 'oyunhaber_register_cpts' ) ) :
 			'has_archive'   => true,
 			'show_in_rest'  => true,
 			'menu_icon'     => 'dashicons-groups',
-			'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments' ),
+			'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments', 'author' ),
+			'taxonomies'    => array( 'category', 'post_tag' ),
 			'rewrite'       => array( 'slug' => 'e-spor' ),
 		) );
 
@@ -93,7 +100,7 @@ if ( ! function_exists( 'oyunhaber_register_cpts' ) ) :
             'menu_name'         => __( 'Platform', 'oyunhaber' ),
         );
 
-        register_taxonomy( 'platform', array( 'news', 'reviews' ), array(
+        register_taxonomy( 'platform', array( 'news', 'reviews', 'videos', 'esports' ), array(
             'hierarchical'      => true,
             'labels'            => $labels,
             'show_ui'           => true,
@@ -102,6 +109,28 @@ if ( ! function_exists( 'oyunhaber_register_cpts' ) ) :
             'rewrite'           => array( 'slug' => 'platform' ),
             'show_in_rest'      => true,
         ) );
+
+        // 5. Slider (Homepage Slider)
+		register_post_type( 'slider', array(
+			'labels' => array(
+				'name'               => __( 'Slider', 'oyunhaber' ),
+				'singular_name'      => __( 'Slide', 'oyunhaber' ),
+				'add_new'            => __( 'Yeni Slide Ekle', 'oyunhaber' ),
+				'add_new_item'       => __( 'Yeni Slide Ekle', 'oyunhaber' ),
+				'edit_item'          => __( 'Slide Düzenle', 'oyunhaber' ),
+				'new_item'           => __( 'Yeni Slide', 'oyunhaber' ),
+				'all_items'          => __( 'Tüm Slide\'lar', 'oyunhaber' ),
+				'menu_name'          => __( 'Slider Ayarları', 'oyunhaber' ), // User requested "Sliderları Kontrol Et" style name
+			),
+			'public'        => false, // Not searchable/viewable on its own URL
+            'show_ui'       => true,  // Show in Admin
+			'show_in_rest'  => true,
+            'publicly_queryable' => true,
+            'exclude_from_search' => true,
+			'menu_icon'     => 'dashicons-images-alt2',
+            'menu_position' => 5, // Top of menu
+			'supports'      => array( 'title', 'editor', 'thumbnail', 'custom-fields' ), // Title=Headline, Thumbnail=Bg Image, Custom Fields=Link
+		) );
 
 	}
 endif;
@@ -132,3 +161,15 @@ function oyunhaber_insert_default_terms() {
     }
 }
 add_action( 'admin_init', 'oyunhaber_insert_default_terms' );
+
+// 6. Explicitly Add "Add New Review" Submenu
+function oyunhaber_add_review_submenu() {
+    add_submenu_page(
+        'edit.php?post_type=news',          // Parent slug (Content Management)
+        'Yeni İnceleme Ekle',               // Page Title
+        'Yeni İnceleme Ekle',               // Menu Title
+        'edit_posts',                       // Capability
+        'post-new.php?post_type=reviews'    // Menu slug (Direct link to add new)
+    );
+}
+add_action( 'admin_menu', 'oyunhaber_add_review_submenu' );

@@ -9,10 +9,18 @@ $platforms = get_the_terms( get_the_ID(), 'platform' );
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('card'); ?>>
+    <?php 
+    $video_url = get_post_meta( get_the_ID(), '_oyunhaber_video_url', true ); 
+    ?>
     <?php if ( has_post_thumbnail() ) : ?>
         <div class="card-image">
             <a href="<?php the_permalink(); ?>">
                 <?php the_post_thumbnail('medium'); ?>
+                <?php if(!empty($video_url)): ?>
+                    <div class="play-icon-overlay">
+                        <span class="dashicons dashicons-controls-play"></span>
+                    </div>
+                <?php endif; ?>
             </a>
             <?php if ( $platforms && ! is_wp_error( $platforms ) ) : ?>
                 <div class="card-platforms">

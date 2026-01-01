@@ -1,0 +1,133 @@
+[31-Dec-2025 18:00:37 UTC] wp_privacy_delete_old_export_files kancası için zamanlanmış görevin zamanı ayarlanırken sorun çıktı. Hata kodu: could_not_set, Hata iletisi: Zamanlanmış görev olay listesi kaydedilemedi., Veri: {"schedule":"hourly","args":[],"interval":3600}
+[31-Dec-2025 18:17:06 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function oyunhaber_get_platform_color() in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\taxonomy-platform.php:12
+Stack trace:
+#0 C:\Users\ferat\Local Sites\orbi\app\public\wp-includes\template-loader.php(125): include()
+#1 C:\Users\ferat\Local Sites\orbi\app\public\wp-blog-header.php(19): require_once('C:\\Users\\ferat\\...')
+#2 C:\Users\ferat\Local Sites\orbi\app\public\index.php(17): require('C:\\Users\\ferat\\...')
+#3 {main}
+  thrown in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\taxonomy-platform.php on line 12
+[31-Dec-2025 18:17:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function oyunhaber_get_platform_color() in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\taxonomy-platform.php:12
+Stack trace:
+#0 C:\Users\ferat\Local Sites\orbi\app\public\wp-includes\template-loader.php(125): include()
+#1 C:\Users\ferat\Local Sites\orbi\app\public\wp-blog-header.php(19): require_once('C:\\Users\\ferat\\...')
+#2 C:\Users\ferat\Local Sites\orbi\app\public\index.php(17): require('C:\\Users\\ferat\\...')
+#3 {main}
+  thrown in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\taxonomy-platform.php on line 12
+[31-Dec-2025 18:17:16 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function oyunhaber_get_platform_color() in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\taxonomy-platform.php:12
+Stack trace:
+#0 C:\Users\ferat\Local Sites\orbi\app\public\wp-includes\template-loader.php(125): include()
+#1 C:\Users\ferat\Local Sites\orbi\app\public\wp-blog-header.php(19): require_once('C:\\Users\\ferat\\...')
+#2 C:\Users\ferat\Local Sites\orbi\app\public\index.php(17): require('C:\\Users\\ferat\\...')
+#3 {main}
+  thrown in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\taxonomy-platform.php on line 12
+[31-Dec-2025 18:17:19 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function oyunhaber_get_platform_color() in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\taxonomy-platform.php:12
+Stack trace:
+#0 C:\Users\ferat\Local Sites\orbi\app\public\wp-includes\template-loader.php(125): include()
+#1 C:\Users\ferat\Local Sites\orbi\app\public\wp-blog-header.php(19): require_once('C:\\Users\\ferat\\...')
+#2 C:\Users\ferat\Local Sites\orbi\app\public\index.php(17): require('C:\\Users\\ferat\\...')
+#3 {main}
+  thrown in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\taxonomy-platform.php on line 12
+[31-Dec-2025 18:17:20 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function oyunhaber_get_platform_color() in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\taxonomy-platform.php:12
+Stack trace:
+#0 C:\Users\ferat\Local Sites\orbi\app\public\wp-includes\template-loader.php(125): include()
+#1 C:\Users\ferat\Local Sites\orbi\app\public\wp-blog-header.php(19): require_once('C:\\Users\\ferat\\...')
+#2 C:\Users\ferat\Local Sites\orbi\app\public\index.php(17): require('C:\\Users\\ferat\\...')
+#3 {main}
+  thrown in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\taxonomy-platform.php on line 12
+[31-Dec-2025 18:17:21 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function oyunhaber_get_platform_color() in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\taxonomy-platform.php:12
+Stack trace:
+#0 C:\Users\ferat\Local Sites\orbi\app\public\wp-includes\template-loader.php(125): include()
+#1 C:\Users\ferat\Local Sites\orbi\app\public\wp-blog-header.php(19): require_once('C:\\Users\\ferat\\...')
+#2 C:\Users\ferat\Local Sites\orbi\app\public\index.php(17): require('C:\\Users\\ferat\\...')
+#3 {main}
+  thrown in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\taxonomy-platform.php on line 12
+[31-Dec-2025 18:17:30 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function oyunhaber_get_platform_color() in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\taxonomy-platform.php:12
+Stack trace:
+#0 C:\Users\ferat\Local Sites\orbi\app\public\wp-includes\template-loader.php(125): include()
+#1 C:\Users\ferat\Local Sites\orbi\app\public\wp-blog-header.php(19): require_once('C:\\Users\\ferat\\...')
+#2 C:\Users\ferat\Local Sites\orbi\app\public\index.php(17): require('C:\\Users\\ferat\\...')
+#3 {main}
+  thrown in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\taxonomy-platform.php on line 12
+[31-Dec-2025 18:32:31 UTC] PHP Parse error:  syntax error, unexpected token "=>", expecting ")" in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\admin-editor.php on line 74
+[31-Dec-2025 18:32:32 UTC] PHP Parse error:  syntax error, unexpected token "=>", expecting ")" in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\admin-editor.php on line 74
+[31-Dec-2025 18:32:39 UTC] PHP Parse error:  syntax error, unexpected token "=>", expecting ")" in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\admin-editor.php on line 74
+[31-Dec-2025 18:32:39 UTC] PHP Parse error:  syntax error, unexpected token "=>", expecting ")" in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\admin-editor.php on line 74
+[31-Dec-2025 18:32:49 UTC] PHP Parse error:  syntax error, unexpected token "=>", expecting ")" in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\admin-editor.php on line 74
+[31-Dec-2025 18:32:49 UTC] PHP Warning:  Trying to access array offset on value of type bool in C:\Users\ferat\Local Sites\orbi\app\public\wp-includes\class-wp-recovery-mode-email-service.php on line 367
+[31-Dec-2025 18:32:49 UTC] PHP Warning:  Trying to access array offset on value of type bool in C:\Users\ferat\Local Sites\orbi\app\public\wp-includes\class-wp-recovery-mode-email-service.php on line 368
+[31-Dec-2025 18:32:49 UTC] PHP Parse error:  syntax error, unexpected token "=>", expecting ")" in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\admin-editor.php on line 74
+[31-Dec-2025 18:32:49 UTC] PHP Parse error:  syntax error, unexpected token "=>", expecting ")" in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\admin-editor.php on line 74
+[31-Dec-2025 23:03:30 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:40 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:49 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:49 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:51 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:51 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:51 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:51 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:51 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:51 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:51 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:52 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:52 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:52 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:52 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:52 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:52 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:53 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:53 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:53 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:53 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:53 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:53 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:54 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:54 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:54 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:54 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:54 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:55 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:55 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:55 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:55 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:55 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:55 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:56 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:56 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:03:56 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:04:00 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:04:00 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:04:02 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:04:08 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:05:30 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:05:48 UTC] PHP Parse error:  Unclosed '{' on line 21 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\header.php on line 161
+[31-Dec-2025 23:44:28 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:58) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 59
+[31-Dec-2025 23:44:28 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:58) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 59
+[31-Dec-2025 23:44:29 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:58) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 59
+[31-Dec-2025 23:44:29 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:58) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 59
+[31-Dec-2025 23:44:53 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:63) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 64
+[31-Dec-2025 23:44:53 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:63) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 64
+[31-Dec-2025 23:44:54 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:63) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 64
+[31-Dec-2025 23:44:54 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:63) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 64
+[31-Dec-2025 23:44:54 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:63) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 64
+[31-Dec-2025 23:44:54 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:63) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 64
+[31-Dec-2025 23:44:54 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:63) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 64
+[31-Dec-2025 23:45:10 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:63) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 64
+[31-Dec-2025 23:45:10 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:63) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 64
+[31-Dec-2025 23:45:12 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:63) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 64
+[31-Dec-2025 23:45:12 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:63) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 64
+[31-Dec-2025 23:45:13 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:63) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 64
+[31-Dec-2025 23:45:13 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:63) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 64
+[31-Dec-2025 23:45:16 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:63) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 64
+[31-Dec-2025 23:45:16 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:63) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 64
+[31-Dec-2025 23:45:17 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:63) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 64
+[31-Dec-2025 23:45:17 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:63) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 64
+[31-Dec-2025 23:45:17 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:63) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 64
+[31-Dec-2025 23:45:17 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:63) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 64
+[31-Dec-2025 23:45:17 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:63) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 64
+[31-Dec-2025 23:45:17 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:63) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 64
+[31-Dec-2025 23:45:28 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:63) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 64
+[31-Dec-2025 23:45:29 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:63) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 64
+[31-Dec-2025 23:45:29 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:63) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 64
+[31-Dec-2025 23:45:29 UTC] PHP Fatal error:  Cannot redeclare oyunhaber_save_video_meta() (previously declared in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php:63) in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\inc\metabox-video.php on line 64
+[01-Jan-2026 00:47:05 UTC] PHP Parse error:  Unclosed '{' on line 501 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\functions.php on line 529
+[01-Jan-2026 00:47:06 UTC] PHP Parse error:  Unclosed '{' on line 501 in C:\Users\ferat\Local Sites\orbi\app\public\wp-content\themes\gamenews\functions.php on line 529

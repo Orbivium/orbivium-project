@@ -10,6 +10,14 @@ if ( ! function_exists( 'oyunhaber_setup' ) ) :
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 */
 	function oyunhaber_setup() {
+        // TEMPORARY: Flush rewrite rules to fix 404s on new CPTs/Terms
+        // This effectively does what 'wp rewrite flush' does but on page load.
+        // We check for a transient to avoid running this on every single load forever.
+        if ( ! get_transient( 'oyunhaber_rewrite_flush_v2' ) ) {
+            flush_rewrite_rules();
+            set_transient( 'oyunhaber_rewrite_flush_v2', true, 12 * HOUR_IN_SECONDS );
+        }
+
 		// Make theme available for translation.
 		load_theme_textdomain( 'oyunhaber', get_template_directory() . '/languages' );
 
@@ -116,7 +124,8 @@ add_action( 'widgets_init', 'oyunhaber_widgets_init' );
 function oyunhaber_scripts() {
     // Google Fonts for Platforms
     // Mobil: Fredoka, PC/Genel: Exo 2, PlayStation: Saira, Xbox: Roboto, Nintendo: Nunito
-    wp_enqueue_style( 'oyunhaber-fonts', 'https://fonts.googleapis.com/css2?family=Anton&family=Exo+2:wght@500;700&family=Fredoka:wght@400;600&family=Nunito:wght@700&family=Roboto:wght@500;700&family=Saira:wght@500;700&display=swap', array(), null );
+    wp_enqueue_style( 'oyunhaber-fonts', 'https://fonts.googleapis.com/css2?family=Anton&family=Monoton&family=Exo+2:wght@500;700&family=Fredoka:wght@400;600&family=Nunito:wght@700&family=Roboto:wght@500;700&family=Saira:wght@500;700&family=Orbitron:wght@400;700;900&family=Montserrat:wght@600;700&family=DM+Sans:wght@600&family=Manrope:wght@600&family=Outfit:wght@600&family=Quicksand:wght@300;400;500&display=swap', array(), null );
+    wp_enqueue_style( 'oyunhaber-font-satoshi', 'https://api.fontshare.com/v2/css?f[]=satoshi@700&display=swap', array(), null );
 
 	wp_enqueue_style( 'oyunhaber-style', get_stylesheet_uri() );
     wp_enqueue_style( 'dashicons' );
@@ -126,20 +135,32 @@ add_action( 'wp_enqueue_scripts', 'oyunhaber_scripts' );
 /**
  * Custom Post Types registration.
  */
+// Custom Post Types
 require get_template_directory() . '/inc/custom-post-types.php';
+
+// Footer Settings
+require get_template_directory() . '/inc/footer-settings.php';
+require get_template_directory() . '/inc/homepage-manager.php';
+// Demo Data Includes
 require get_template_directory() . '/inc/demo-data.php';
+// Video Meta Box
+require get_template_directory() . '/inc/metabox-video.php';
 require get_template_directory() . '/inc/moderator-role.php';
+require get_template_directory() . '/inc/subscriber-role.php';
+require get_template_directory() . '/inc/local-avatar.php';
+require get_template_directory() . '/inc/admin-user-enhancements.php';
+require get_template_directory() . '/inc/setup-terms.php';
+require get_template_directory() . '/inc/auto-create-pages.php';
+
+
+// Custom Login Redirects temporarily removed to allow admin access
+
+require get_template_directory() . '/inc/admin-editor.php';
 
 /**
- * Dynamic Platform Colors
- * 
- * Changes the accent color and tints the whole page based on the current platform.
+ * Helper: Get Platform Color by Slug
  */
-function oyunhaber_dynamic_platform_colors() {
-    $current_color = '';
-    
-    // Platform Colors Definition
-    // Format: 'slug' => 'color_hex'
+function oyunhaber_get_platform_color( $slug ) {
     $platform_colors = array(
         'genel'       => '#9b59b6', // Purple for General
         'pc'          => '#0abde3', // Cyan/Blue
@@ -149,11 +170,38 @@ function oyunhaber_dynamic_platform_colors() {
         'mobil'       => '#ff9f43', // Orange
     );
 
+    return isset( $platform_colors[ $slug ] ) ? $platform_colors[ $slug ] : '#ff4757'; // Default Red
+}
+
+/**
+ * Helper: Get Platform Icon by Slug
+ */
+function oyunhaber_get_platform_icon( $slug ) {
+    $platform_icons = array(
+        'genel'       => 'dashicons-admin-site',
+        'pc'          => 'dashicons-desktop',
+        'playstation' => 'dashicons-games',
+        'xbox'        => 'dashicons-cloud',
+        'nintendo'    => 'dashicons-smiley',
+        'mobil'       => 'dashicons-smartphone',
+    );
+
+    return isset( $platform_icons[ $slug ] ) ? $platform_icons[ $slug ] : 'dashicons-admin-generic';
+}
+
+/**
+ * Dynamic Platform Colors
+ * 
+ * Changes the accent color and tints the whole page based on the current platform.
+ */
+function oyunhaber_dynamic_platform_colors() {
+    $current_color = '';
+    
     // 1. Is it a Platform Archive Page?
     if ( is_tax( 'platform' ) ) {
         $term = get_queried_object();
-        if ( isset( $term->slug ) && isset( $platform_colors[ $term->slug ] ) ) {
-            $current_color = $platform_colors[ $term->slug ];
+        if ( isset( $term->slug ) ) {
+            $current_color = oyunhaber_get_platform_color( $term->slug );
         }
     } 
     // 2. Is it a Single Post?
@@ -161,8 +209,8 @@ function oyunhaber_dynamic_platform_colors() {
         $terms = get_the_terms( get_the_ID(), 'platform' );
         if ( $terms && ! is_wp_error( $terms ) ) {
             $term = reset( $terms ); 
-            if ( isset( $term->slug ) && isset( $platform_colors[ $term->slug ] ) ) {
-                $current_color = $platform_colors[ $term->slug ];
+            if ( isset( $term->slug ) ) {
+                $current_color = oyunhaber_get_platform_color( $term->slug );
             }
         }
     }

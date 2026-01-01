@@ -20,7 +20,20 @@
                     the_custom_logo();
                 } else {
                     ?>
-                    <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+                    <?php
+                    $logo_path = get_template_directory() . '/assets/images/fonts/logo.svg';
+                    if ( file_exists( $logo_path ) ) {
+                        ?>
+                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home" class="custom-logo-link">
+                            <?php echo file_get_contents( $logo_path ); ?>
+                        </a>
+                        <?php
+                    } else {
+                        ?>
+                        <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">Orbi</a></h1>
+                        <?php
+                    }
+                    ?>
                     <?php
                 }
                 ?>
@@ -62,6 +75,37 @@
                                 continue;
                             }
 
+                            // Sub-menu definitions
+                            $sub_menu_items = array();
+                            $base_filter_url = $term_link; // Start with the platform URL
+
+                            // Common Filters
+                            // Haberler -> Post Type: news
+                            $type_haber   = add_query_arg( 'filter_type', 'news', $base_filter_url );
+                            // İncelemeler -> Post Type: reviews
+                            $type_inceleme= add_query_arg( 'filter_type', 'reviews', $base_filter_url );
+                            // Rehberler -> Category: rehberler (Works across all types)
+                            $cat_rehber  = add_query_arg( 'filter_cat', 'rehberler', $base_filter_url );
+
+                            // Default sub-tab structure
+                            $sub_menu_items = array(
+                                'Tümü'        => $base_filter_url,
+                                'Haberler'    => $type_haber,
+                                'İncelemeler' => $type_inceleme,
+                                'Rehberler'   => $cat_rehber,
+                            );
+
+                            // Platform specific additions (Tags)
+                            if ( $term->slug === 'playstation' ) {
+                                $sub_menu_items['PS Plus'] = add_query_arg( 'filter_tag', 'ps-plus', $base_filter_url );
+                            } elseif ( $term->slug === 'xbox' ) {
+                                $sub_menu_items['Game Pass'] = add_query_arg( 'filter_tag', 'game-pass', $base_filter_url );
+                            } elseif ( $term->slug === 'nintendo' ) {
+                                $sub_menu_items['Özel Oyunlar'] = add_query_arg( 'filter_tag', 'ozel-oyunlar', $base_filter_url );
+                            } elseif ( $term->slug === 'mobil' ) {
+                                $sub_menu_items['Ücretsiz Oyunlar'] = add_query_arg( 'filter_tag', 'ucretsiz-oyunlar', $base_filter_url );
+                            }
+
                             // Check for logo
                             $logo_html = '';
                             $theme_dir = get_template_directory();
@@ -79,8 +123,21 @@
                             if ( is_tax( 'platform', $term->slug ) || ( is_single() && has_term( $term->term_id, 'platform' ) ) ) {
                                 $active_class = 'current-platform';
                             }
-
-                            echo '<li class="' . esc_attr( $active_class ) . ' platform-item-' . esc_attr( $term->slug ) . '"><a href="' . esc_url( $term_link ) . '" class="platform-menu-link">' . $logo_html . '<span>' . esc_html( $term->name ) . '</span></a></li>';
+                            
+                            // Render Item
+                            echo '<li class="platform-item ' . esc_attr( $active_class ) . ' platform-item-' . esc_attr( $term->slug ) . '">';
+                            echo '<a href="' . esc_url( $term_link ) . '" class="platform-menu-link">' . $logo_html . '<span>' . esc_html( $term->name ) . '</span></a>';
+                            
+                            // Render Sub-menu
+                            if ( ! empty( $sub_menu_items ) ) {
+                                echo '<ul class="platform-sub-menu">';
+                                foreach ( $sub_menu_items as $label => $url ) {
+                                    echo '<li><a href="' . esc_url( $url ) . '">' . esc_html( $label ) . '</a></li>';
+                                }
+                                echo '</ul>';
+                            }
+                            
+                            echo '</li>';
                         }
                     }
                     ?>
@@ -96,9 +153,9 @@
                     <a href="<?php echo esc_url( home_url( '/profil/' ) ); ?>" class="btn-login btn-profile"><span class="dashicons dashicons-admin-users" style="margin-right:5px; vertical-align:middle;"></span><?php esc_html_e( 'Profil', 'oyunhaber' ); ?></a>
                     <a href="<?php echo esc_url( wp_logout_url( home_url() ) ); ?>" class="btn-login btn-logout"><?php esc_html_e( 'Çıkış', 'oyunhaber' ); ?></a>
                 <?php else : ?>
-                    <a href="<?php echo esc_url( wp_login_url( home_url() ) ); ?>" class="btn-login"><?php esc_html_e( 'Giriş', 'oyunhaber' ); ?></a>
+                    <a href="<?php echo esc_url( home_url('/giris-yap/') ); ?>" class="btn-login"><?php esc_html_e( 'Giriş', 'oyunhaber' ); ?></a>
                     <?php if ( get_option( 'users_can_register' ) ) : ?>
-                        <a href="<?php echo esc_url( wp_registration_url() ); ?>" class="btn-login btn-register"><?php esc_html_e( 'Kayıt Ol', 'oyunhaber' ); ?></a>
+                        <a href="<?php echo esc_url( home_url('/kayit-ol/') ); ?>" class="btn-login btn-register"><?php esc_html_e( 'Kayıt Ol', 'oyunhaber' ); ?></a>
                     <?php endif; ?>
                 <?php endif; ?>
             </div>

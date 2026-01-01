@@ -80,18 +80,39 @@ a:hover {
 .site-branding {
     flex: 0 0 auto;
     margin-right: 20px;
+    margin-left: -10px;
+    /* Slight shift to left */
 }
 
 .site-title {
-    font-size: 1.5rem;
+    font-family: 'Satoshi', sans-serif;
+    font-size: 2.5rem;
     font-weight: 700;
+    /* Bold */
     margin: 0;
-    letter-spacing: -0.5px;
+    letter-spacing: -1px;
     line-height: 1;
+    text-transform: none;
 }
 
 .site-title a {
-    color: #fff;
+    color: #E0E0E0;
+}
+
+/* Logo SVG Fix */
+.custom-logo-link {
+    display: block;
+    width: 90px !important;
+    /* Force small width */
+}
+
+.custom-logo-link svg {
+    width: 100%;
+    height: auto;
+    max-height: 50px;
+    /* Constrain height */
+    fill: currentColor;
+    /* Inherit color if needed */
 }
 
 /* Navigation */
@@ -279,6 +300,8 @@ a:hover {
     box-shadow: var(--card-shadow);
     display: flex;
     flex-direction: column;
+    height: 100%;
+    /* Ensure equal height in grid */
 }
 
 .card:hover {
@@ -711,10 +734,12 @@ a:hover {
 .single-hero {
     position: relative;
     background-color: var(--bg-secondary);
-    min-height: 250px;
+    min-height: 180px;
+    /* Reduced from 250px */
     display: flex;
     align-items: center;
-    padding: 40px 0;
+    padding: 20px 0;
+    /* Reduced from 40px 0 */
     margin-bottom: 40px;
     overflow: hidden;
 }
@@ -1397,6 +1422,201 @@ a:hover {
 }
 
 #scroll-to-top:hover {
+    display: inline-block;
+    background: var(--accent-color);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.profile-meta {
+    display: flex;
+    gap: 25px;
+    font-size: 0.95rem;
+    color: #b0b0b0;
+}
+
+.profile-meta span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.profile-meta i {
+    color: var(--accent-color);
+}
+
+/* Profile Grid */
+.container-medium {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+/* Sidebar Info Card */
+.profile-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 25px;
+}
+
+.info-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    color: #fff;
+}
+
+.info-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 25px 0;
+}
+
+.info-card li {
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+    word-break: break-word;
+}
+
+.info-card li strong {
+    display: block;
+    color: #888;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+}
+
+.btn-edit-profile {
+    display: block;
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-edit-profile:hover {
+    background: var(--accent-color);
+    color: #fff;
+}
+
+/* Content Area */
+.section-title {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    color: #fff;
+    border-left: 4px solid var(--accent-color);
+    padding-left: 15px;
+}
+
+.profile-comment-item {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.2s;
+}
+
+.profile-comment-item:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-color);
+}
+
+.comment-header {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.comment-date {
+    margin-right: 10px;
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.comment-post-link a {
+    color: #fff;
+    font-weight: 600;
+}
+
+.comment-text {
+    font-style: italic;
+    color: #ddd;
+    margin-bottom: 15px;
+}
+
+.view-comment-link {
+    font-size: 0.85rem;
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.no-activity {
+    color: #888;
+    font-style: italic;
+}
+
+/* Responsive Profile */
+@media (max-width: 768px) {
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-meta {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+/* Scroll to Top Button */
+#scroll-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--accent-color);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 9999;
+}
+
+#scroll-to-top:hover {
     background-color: var(--accent-hover);
     transform: translateY(-5px);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
@@ -1413,4 +1633,202 @@ a:hover {
     #scroll-to-top .dashicons {
         font-size: 20px;
     }
+}
+
+/* =========================================
+   Platform Sub-Menus (Dropdowns)
+   ========================================= */
+.platform-item {
+    position: relative;
+    /* Ensure no overflow hidden on parents if possible */
+}
+
+/* Ensure the ul inside main-nav is visible for dropdowns */
+.main-navigation ul {
+    overflow: visible !important;
+}
+
+.platform-sub-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(15px);
+    background: rgba(25, 25, 25, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 8px;
+    min-width: 200px;
+    /* Wide enough for clear text */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 5px 15px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 4px !important;
+    /* Override default specific gap */
+}
+
+/* Arrow indicator on top of dropdown */
+.platform-sub-menu::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
+    background: rgba(25, 25, 25, 0.95);
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: -1;
+}
+
+/* Show on hover */
+.platform-item:hover .platform-sub-menu,
+.platform-item:focus-within .platform-sub-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(10px);
+}
+
+.platform-sub-menu li {
+    width: 100%;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.platform-sub-menu a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    color: #b0b0b0;
+    /* Softer text color */
+    background: transparent;
+    border: none;
+    text-align: left;
+    white-space: nowrap;
+    box-shadow: none;
+    border-radius: 8px;
+    font-family: 'Segoe UI', sans-serif;
+    text-transform: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    justify-content: flex-start;
+    /* Align text left */
+}
+
+.platform-sub-menu a:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    transform: translateX(4px);
+    /* Subtle nudge */
+    box-shadow: none;
+}
+
+/* Sub-menu current item highlight if possible */
+.platform-sub-menu li.current-menu-item a {
+    background: rgba(var(--platform-rgb), 0.15);
+    color: var(--accent-color);
+}
+
+/* Mobile: Disable sub-menus for now to prevent layout break inside horizontal scroll */
+@media (max-width: 768px) {
+    .platform-sub-menu {
+        display: none !important;
+    }
+}
+
+/* Video Meta Support */
+.single-hero-video-container {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto 30px;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    aspect-ratio: 16/9;
+}
+
+.single-hero-video-container iframe,
+.single-hero-video-container video {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Play Icon Overlay */
+.play-icon-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+}
+
+.play-icon-overlay .dashicons {
+    color: #fff;
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    margin-left: 2px;
+    /* slight visual center adjust */
+}
+
+.card-image:hover .play-icon-overlay {
+    background: var(--p-accent-red);
+    transform: translate(-50%, -50%) scale(1.1);
+    transition: all 0.3s;
+}
+
+/* New Video Layout */
+.single-video-wrapper {
+    margin-top: -30px;
+    /* Less overlap, sits lower */
+    position: relative;
+    z-index: 10;
+    margin-bottom: 40px;
+    max-width: 800px;
+    /* Much smaller width */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.video-player-box {
+    background: #000;
+    border-radius: 16px;
+    /* Slightly smaller radius */
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    padding-bottom: 56.25%;
+    /* 16:9 Aspect Ratio */
+    height: 0;
+}
+
+.video-player-box iframe,
+.video-player-box video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }

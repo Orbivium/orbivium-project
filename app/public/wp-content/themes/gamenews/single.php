@@ -12,7 +12,21 @@ get_header();
             <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 
                 <!-- Hero Section -->
-                <header class="entry-header single-hero <?php echo $thumb_url ? 'has-bg' : ''; ?>">
+                <?php 
+                $video_url  = get_post_meta( get_the_ID(), '_oyunhaber_video_url', true ); 
+                $file_url   = get_post_meta( get_the_ID(), '_oyunhaber_video_file_url', true );
+                
+                // Determine which video to show
+                $final_video_type = '';
+                if ( ! empty( $file_url ) ) {
+                    $final_video_type = 'file';
+                } elseif ( ! empty( $video_url ) ) {
+                    $final_video_type = 'embed';
+                }
+
+                $extra_class = $thumb_url ? 'has-bg' : '';
+                ?>
+                <header class="entry-header single-hero <?php echo $extra_class; ?>">
                     <?php if ( $thumb_url ) : ?>
                         <div class="single-hero-bg" style="background-image: url('<?php echo esc_url($thumb_url); ?>');"></div>
                         <div class="single-hero-overlay"></div>
@@ -50,6 +64,28 @@ get_header();
                         </div>
                     </div>
                 </header>
+
+                <!-- Video Section (If exists) -->
+                <?php if ( ! empty( $final_video_type ) ) : ?>
+                    <div class="container single-video-wrapper">
+                         <div class="video-player-box">
+                             <?php 
+                             if ( $final_video_type === 'file' ) {
+                                 // MP4 File from Library
+                                 echo '<video src="' . esc_url($file_url) . '" controls preload="metadata" style="width:100%; height:100%; object-fit: cover;"></video>';
+                             } else {
+                                 // Embed URL (YouTube/Vimeo)
+                                 $embed_code = wp_oembed_get($video_url, array('width' => 1200, 'height' => 675)); 
+                                 if($embed_code) {
+                                    echo $embed_code;
+                                 } else {
+                                    echo '<video src="' . esc_url($video_url) . '" controls></video>';
+                                 }
+                             }
+                             ?>
+                         </div>
+                    </div>
+                <?php endif; ?>
 
                 <!-- Content Section -->
                 <div class="container container-narrow">
