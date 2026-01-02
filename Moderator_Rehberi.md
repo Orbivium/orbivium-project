@@ -1,46 +1,59 @@
-# ORBI Moderatör Rehberi v1.0
+# 🛡️ ORBI MODERATÖR REHBERİ (V2.0 - DETAYLI)
 
-## 1. Giriş ve Amaç
-Bu rehber, ORBI platformundaki moderatörlerin görevlerini, yetkilerini ve topluluk yönetim standartlarını belirlemek amacıyla hazırlanmıştır. Amacımız, oyun dünyasının nabzını tutarken saygılı, bilgilendirici ve eğlenceli bir ortam yaratmaktır.
+Bu rehber, ORBI topluluk yönetimindeki en ince detayları ve uygulama standartlarını içerir.
 
-## 2. Moderatörün Sorumlulukları
-Moderatörler, sitenin düzenini sağlamak, içerik kalitesini korumak ve üyeler arası etkileşimi yönetmekle yükümlüdür.
-
-### Temel Görevler:
-- **Yorum Denetimi:** Kullanıcı yorumlarını düzenli olarak kontrol etmek, spam, hakaret veya kurallara aykırı içerikleri kaldırmak.
-- **İçerik Kontrolü:** Yayınlanan haber ve incelemelerin doğruluğunu ve formatını (imla, görsel kalitesi) kontrol etmek.
-- **Topluluk Yönetimi:** Üyelerden gelen soruları yanıtlamak veya ilgili birime yönlendirmek.
-- **Düzen Koruma:** Tartışmaların yapıcı kalmasını sağlamak, "fanboy" savaşlarını yatıştırmak.
-
-## 3. İçerik ve Yorum Kuralları
-Aşağıdaki durumlarda müdahale edilmesi zorunludur:
-
-1.  **Nefret Söylemi:** Irkçılık, cinsiyetçilik veya herhangi bir gruba yönelik ayrımcılık (Anında Ban).
-2.  **Spoiler:** Hikaye odaklı oyunlar için spoiler içeren yorumlar, "SPOILER" uyarısı yoksa gizlenmeli veya silinmelidir.
-3.  **Reklam/Spam:** Alakasız linkler, bot yorumları veya ticari reklamlar silinmelidir.
-4.  **Korsan İçerik:** Korsan oyun indirme linki paylaşımı veya teşviki yasaktır.
-
-## 4. Platform Standartları
-Her platformun (PC, PlayStation, Xbox, Nintendo, Mobil) kendine has bir kitlesi vardır. Moderatörler bu kitlelerin dinamiklerine saygı duymalı ancak platform fanatikliğinin toksik seviyeye ulaşmasına izin vermemelidir.
-
-- **Renk Kodları:**
-    - Genel: Mor (#9b59b6)
-    - PC: Mavi (#0abde3)
-    - PlayStation: Koyu Mavi (#003791)
-    - Xbox: Yeşil (#107c10)
-    - Nintendo: Kırmızı (#e60012)
-    - Mobil: Turuncu (#ff9f43)
-
-*İpucu: Bir tartışma alevlendiğinde tarafsızlığınızı koruyun ve bu renklerin sadece birer tercih olduğunu hatırlatın.*
-
-## 5. Müdahale ve Ceza Sistemi
-1.  **Uyarı:** İlk kez kural ihlali yapan üyeye özel mesaj veya yorum yanıtı ile uyarı verilir.
-2.  **Geçici Uzaklaştırma (Mute/Ban):** Israrlı kural ihlallerinde (24 saat - 3 gün).
-3.  **Kalıcı Uzaklaştırma (Perma-Ban):** Ağır hakaret, tehdit veya spam botları için uygulanır.
-
-## 6. Panel Kullanımı
-- **Yorumlar Paneli:** WordPress admin panelinde "Yorumlar" sekmesinden bekleyen yorumları onaylayın veya silin.
-- **Profil Düzenleme:** Uygunsuz profil fotoğrafı veya kullanıcı adı tespit edilirse, yöneticiye (Admin) bildirin.
+## 1. MODERASYON FELSEFESİ
+ORBI bir haber sitesinden öte, bir oyuncu topluluğudur. Moderatörlerin amacı yasaklamak değil, **kaliteli bir tartışma ortamı** sürdürmektir. Tartışmalar sertleşebilir, ancak şahsileşmemelidir.
 
 ---
-**Unutmayın:** Sizler ORBI'nin vitrinisiniz. Adaletli, sabırlı ve oyun kültürüne hakim bir duruş sergilemek en önemli görevinizdir.
+
+## 2. KRİTİK DENETİM NOKTALARI
+
+### 💬 Yorum Moderasyonu (Sıfır Tolerans)
+Aşağıdaki durumları gördüğünüz anda **uyarı yapmadan** yorumu siliniz ve gerekirse kullanıcıyı banlayınız:
+1.  **Şahsi Hakaret:** Diğer üyelere "aptal, cahil" vb. yakıştırmalar.
+2.  **Korsan Teşviki:** "Torrent linki var mı?", "Kırıldı mı?" gibi sorular.
+3.  **Spoiler Felaketi:** Hikaye sonunu bilerek açık edenler.
+4.  **Siyasi/Dini Polemik:** Oyun dışı, kutuplaştırıcı her türlü içerik.
+
+### 🎮 Platform Savaşları (Yönetim)
+"Playstation daha iyi", "Xbox çöp" gibi yorumlar belli bir seviyeye kadar "oyuncu rekabeti" olarak kabul edilir. Ancak:
+- Küfürlü fanboyluk varsa,
+- Başka bir platformun kullanıcısına aşağılayıcı tabirler kullanılıyorsa müdahale edilmelidir.
+
+---
+
+## 3. PANEL KULLANIMI VE İŞLEYİŞ
+
+### 📋 Yorum Onay Süreci
+- **Manuel Onay:** Tüm yeni yorumlar "Onay Bekliyor" durumuna düşer.
+- **Onay Kriteri:** Yorum bir cümle de olsa anlamlı olmalıdır. "Güzel yazı" onayı alabilir, ancak "asdasd" gibi anlamsız yorumlar çöpe atılmalıdır.
+
+### 👤 Kullanıcı Profil Denetimi
+- **Görsel Boyutu:** Profil resimleri 256x256 px olmalıdır.
+- **Uygunsuz Görsel:** Müstehcen veya nefret söylemi içeren avatarlar tespit edildiğinde profil resmi sistemden silinmeli ve kullanıcı uyarılmalıdır.
+
+---
+
+## 4. KRİTİK DURUM SENARYOLARI
+
+### Senaryo A: Yanlış Bilgi/Yalan Haber
+Bir kullanıcı yorumlarda haberin yanlış olduğunu iddia ediyorsa ve kanıt sunuyorsa:
+1.  Yorumu silmeyin.
+2.  Haber yazarına (Editör) haber verin.
+3.  Doğruysa haberi güncellettirin ve yorumu yanıtlayarak "Bilgi için teşekkürler, düzeltildi" yazın.
+
+### Senaryo B: Sürekli Spam
+Bir kullanıcı sürekli link paylaşıyorsa:
+1.  Sistem bazen otomatik engeller. Engellemediyse IP adresini not alın.
+2.  Administrator'a bildirerek IP bazlı engel talep edin.
+
+---
+
+## 5. MODERATÖR DAVRANIŞ KURALLARI
+- **Sakin Kal:** Kullanıcı size saldırsa bile asla aynı dille yanıt vermeyin.
+- **Gücü Kötüye Kullanma:** Kişisel olarak sevmediğiniz birinin kurallara uygun yorumunu silmeyin.
+- **Görünür Ol:** Bazen sadece kaliteli bir yoruma "Harika bir bakış açısı!" demek, topluluğu pozitife yönlendirir.
+
+---
+**İletişim:** Acil durumlarda (Site saldırısı vb.) anında Yönetici kanalından bildirim yapınız.
