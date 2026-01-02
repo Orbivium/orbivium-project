@@ -1,52 +1,76 @@
-# ORBI Teknik Defter (Technical Documentation)
+# 🛠️ ORBI TEKNİK DEFTER (V2.0 - DETAYLI)
 
-## 1. Proje Genel Yapısı
-**Tema:** GameNews (Custom WordPress Theme)
-**Dizin:** `/wp-content/themes/gamenews/`
-**Temel Teknolojiler:** WordPress Core, PHP 8.x, Vanilla CSS (CSS3 Variables), jQuery (Minimal).
+Bu belge, ORBI altyapısının teknik mimarisini, tasarım standartlarını ve kritik kod bloklarını en ince ayrıntısına kadar açıklar.
 
-## 2. Dosya Hiyerarşisi
-- **style.css**: Ana stil dosyası. CSS değişkenleri (`:root`) ile renk yönetimi ve `media queries` ile responsive yapı burada bulunur.
-- **functions.php**: Temanın beyni. Özellik tanımları, güvenlik önlemleri, stil/script yüklemeleri ve özel fonksiyonlar.
-- **header.php**: Site üst kısmı. Navigasyon, Logo, Meta etiketleri ve Dinamik Platform Renkleri (`oyunhaber_dynamic_platform_colors`).
-- **footer.php**: Site alt kısmı. Widget alanları ve kapanış scriptleri.
-- **inc/**: Temanın modüler parçaları.
-    - `activity-log.php`: Admin paneli loglama sistemi.
-    - `custom-post-types.php`: Özel yazı türleri (Video vb.) tanımları.
-    - `moderator-role.php`: Moderatör yetki tanımları.
-    - `ads-manager.php`: Reklam yönetimi.
+## 1. TASARIM SİSTEMİ VE GÖRSEL STANDARTLAR
 
-## 3. Özelleştirilmiş Fonksiyonlar
+### 📏 Görsel Boyut Standartları (Kritik)
+Sitenin görsel bütünlüğünün bozulmaması için aşağıdaki boyutlara sadık kalınmalıdır:
 
-### A. Dinamik Platform Renkleri
-Sistem, kullanıcının bulunduğu kategoriye (Platform) göre sitenin ana rengini otomatik değiştirir.
-- **Dosya:** `functions.php` -> `oyunhaber_dynamic_platform_colors()`
-- **Mekanizma:** `is_tax('platform')` kontrolü yapılır. İlgili `slug` (pc, xbox vb.) alınır ve önceden tanımlı HEX kodları CSS değişkeni (`--accent-color`) olarak sayfaya basılır.
-
-### B. Güvenlik Kısıtlamaları
-- **Admin Bar:** `show_admin_bar(false)` ile Yönetici ve Editör harici herkese gizlenmiştir.
-- **Panel Erişimi:** `/wp-admin/` yoluna girmeye çalışan yetkisiz kullanıcılar (`!current_user_can('manage_options')`) `home_url()` adresine yönlendirilir.
-
-### C. Menü Yapısı
-- **Masaüstü:** Hover ile açılan "Dropdown" menüler (`.sub-menu`). `header.php` içinde PHP döngüsü ile oluşturulur.
-- **Mobil:** "App-like" yatay kaydırmalı menü ve alt barda (overlay) açılan arama/menü butonları.
-
-## 4. CSS Standartları ve Tasarım Dili
-- **Renk Paleti:**
-    - Zemin: `#121212` (Birincil), `#1e1e1e` (İkincil)
-    - Yazı: `#e0e0e0` (Birincil), `#b0b0b0` (İkincil)
-- **Komponentler:**
-    - `Glassmorphism`: `backdrop-filter: blur(10px)` kullanımı.
-    - `Card`: Yuvarlatılmış köşeler (`border-radius: 12px`) ve derin gölgeler (`box-shadow`).
-    - `Butonlar`: `border-radius: 30px` ile hap şeklinde modern butonlar.
-
-## 5. Veritabanı ve Taksonomi
-- **Taxonomy:** `platform` (PC, Xbox, PlayStation, Nintendo, Mobil, Genel).
-- **Post Types:** `post` (Standart Haber/İnceleme), `video` (İleride eklenecek video içerikleri).
-
-## 6. Bakım ve Güncelleme Notları
-- **Yeni Platform Ekleme:** Önce WP panelden taksonomiyi ekleyin, sonra `functions.php` içindeki renk ve ikon arraylerine (`oyunhaber_get_platform_color`) yeni slug'ı tanımlayın.
-- **Logo Değişimi:** `/assets/images/platforms/` altına platform slug'ı ile aynı isimde `.svg` veya `.png` dosyası atılmalıdır.
+| İçerik Türü | Önerilen Boyut | En-Boy Oranı | Notlar |
+| :--- | :--- | :--- | :--- |
+| **Ana Sayfa Slider** | 1920x1080 px | 16:9 | Odak noktası merkezde olmalı. |
+| **Haber/İnceleme Kartı** | 800x450 px | 16:9 | `object-fit: cover` kullanılır. |
+| **Yazı İçi Görseller** | Max Genişlik 1200 px | Değişken | Alt metin (alt tag) eklenmelidir. |
+| **Platform Logoları** | 128x128 px | 1:1 | Şeffaf arka plan (SVG önerilir). |
+| **Kullanıcı Avatarı** | 256x256 px | 1:1 | Kare yüklenmelidir, sistem yuvarlar. |
 
 ---
-Bu defter, yazılım ekibinin projeye hızlı adapte olmasını sağlamak için oluşturulmuştur.
+
+## 2. DİNAMİK RENK VE TEMA MİMARİSİ
+
+Sitenin en kritik özelliği, bulunulan platforma (PC, PlayStation vb.) göre tüm arayüzün renk değiştirmesidir.
+
+### 🎨 Renk Yönetimi (`functions.php`)
+`oyunhaber_dynamic_platform_colors()` fonksiyonu her sayfa yüklendiğinde çalışır:
+1.  Sayfanın taksonomisini (Platform) kontrol eder.
+2.  İlgili HEX kodunu alır (Örn: PlayStation için `#003791`).
+3.  Bu rengi `:root` seviyesinde `--accent-color` değişkenine atar.
+4.  Sayfanın arka planına bu rengin `%25` şeffaflığında bir **Radial Gradient** ekler.
+
+### 📌 Kritik CSS Değişkenleri (`style.css`)
+```css
+:root {
+    --bg-primary: #121212;      /* Ana arka plan */
+    --accent-color: #ff4757;    /* Değişken vurgu rengi */
+    --font-heading: 'Segoe UI'; /* Başlık fontu */
+}
+```
+
+---
+
+## 3. NAVİGASYON VE ARAYÜZ YAPISI
+
+### 🖥️ Masaüstü Navigasyon
+- **Dropdown (Açılır Menü):** Hover (üzerine gelme) durumunda açılır.
+- **Hover Bridge:** Menü ile dropdown arasında kopma olmaması için görünmez bir link katmanı (`::after`) eklenmiştir.
+- **Dinamik Dropdown:** Seçili platform aktifse dropdown o platformun renginde, değilse koyu gri (`#2d2d2d`) görünür.
+
+### 📱 Mobil Arayüz (App-Like)
+- **Top Bar:** Arama ve profil butonlarını içerir.
+- **Secondary Nav:** Platformların yatayda kaydırılabilir listesi.
+- **Arama Overlay:** Tam ekran açılır, `backdrop-filter: blur(10px)` ile arka planı bulanıklaştırır.
+
+---
+
+## 4. GÜVENLİK VE ERİŞİM KONTROLÜ
+
+Siber güvenlik ve yetkisiz erişim için aşağıdaki önlemler kod seviyesinde alınmıştır:
+
+### 🚫 Admin Paneli Kısıtlaması
+`functions.php` içindeki `oyunhaber_security_restrictions()` fonksiyonu:
+- **Kimler Girebilir:** Sadece `Administrator` ve `Editor` rollerine sahip kullanıcılar.
+- **Kimler Engellenir:** Aboneler (`Subscriber`) ve Misafirler.
+- **Sonuç:** Yetkisiz biri `/wp-admin` yazarsa anında Ana Sayfaya yönlendirilir.
+- **Admin Bar:** Sadece yetkililere gösterilir, normal üyeler siteyi tertemiz görür.
+
+---
+
+## 5. DATABASE VE ÖZEL TAXONOMY MİMARİSİ
+
+- **Platform (Taxonomy):** `platform` slug'ı ile tanımlıdır. `PC`, `Xbox`, `Playstation`, `Nintendo`, `Mobil`, `Genel` değerlerini alır.
+- **Video Meta Box:** Videolu haberler için `_video_url` meta alanı kullanılır.
+- **Activity Log:** `inc/activity-log.php` üzerinden tüm kritik admin hareketleri veritabanına kaydedilir.
+
+---
+**Teknik Not:** Tema dosyalarında yapılan değişikliklerden sonra `style.css` versiyon numarasını güncelleyerek tarayıcı önbelleğini temizletebilirsiniz.
