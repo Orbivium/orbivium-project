@@ -1,59 +1,78 @@
-# 🛡️ ORBI MODERATÖR REHBERİ (V2.0 - DETAYLI)
+# 🛡️ ORBI MODERATÖR REHBERİ (V4.0 - TAM KAPSAMLI MASTER REHBER)
 
-Bu rehber, ORBI topluluk yönetimindeki en ince detayları ve uygulama standartlarını içerir.
-
-## 1. MODERASYON FELSEFESİ
-ORBI bir haber sitesinden öte, bir oyuncu topluluğudur. Moderatörlerin amacı yasaklamak değil, **kaliteli bir tartışma ortamı** sürdürmektir. Tartışmalar sertleşebilir, ancak şahsileşmemelidir.
+Bu belge; moderatörlerin yetkilerini, panel kullanımını, paylaşım standartlarını ve görsel boyutlarını içeren nihai kaynaktır.
 
 ---
 
-## 2. KRİTİK DENETİM NOKTALARI
+## 1. PANEL REHBERİ (NEREDE, NE VAR?)
 
-### 💬 Yorum Moderasyonu (Sıfır Tolerans)
-Aşağıdaki durumları gördüğünüz anda **uyarı yapmadan** yorumu siliniz ve gerekirse kullanıcıyı banlayınız:
-1.  **Şahsi Hakaret:** Diğer üyelere "aptal, cahil" vb. yakıştırmalar.
-2.  **Korsan Teşviki:** "Torrent linki var mı?", "Kırıldı mı?" gibi sorular.
-3.  **Spoiler Felaketi:** Hikaye sonunu bilerek açık edenler.
-4.  **Siyasi/Dini Polemik:** Oyun dışı, kutuplaştırıcı her türlü içerik.
+WordPress Admin paneline giriş yaptığınızda sol menüdeki şu alanlar sizin ana çalışma alanınızdır:
 
-### 🎮 Platform Savaşları (Yönetim)
-"Playstation daha iyi", "Xbox çöp" gibi yorumlar belli bir seviyeye kadar "oyuncu rekabeti" olarak kabul edilir. Ancak:
-- Küfürlü fanboyluk varsa,
-- Başka bir platformun kullanıcısına aşağılayıcı tabirler kullanılıyorsa müdahale edilmelidir.
+### 📥 Yorumlar (Comments)
+- **Bekleyenler:** Henüz onaylanmamış yorumlar.
+- **İşlem:** Fareyi yorumun üzerine getirdiğinizde çıkan **"Onayla"**, **"Yanıtla"**, **"Düzenle"**, **"Spam"** veya **"Çöpe At"** seçeneklerini kullanın.
+- **Kritik:** Hakaret içeren kısımları "Düzenle" diyerek temizleyip yayınlamak yerine, yorumu tamamen silmek (veya Spam'e atmak) topluluk kalitesi için daha iyidir.
 
----
+### 👥 Kullanıcılar (Users)
+- **Arama:** Sorunlu bir üyeyi e-posta veya kullanıcı adı ile buradan aratın.
+- **Rol Yetki:** Üyelerin rollerini kontrol edin. Eğer bir üye sürekli kaliteli içerik/yorum paylaşıyorsa yöneticiye "Moderasyon Ekibi"ne öneri sunun.
 
-## 3. PANEL KULLANIMI VE İŞLEYİŞ
+### 🏠 Yazılar (Posts)
+- **Denetim:** Editörlerin girdiği yazıların "Öne Çıkan Görsel" ve "Platform" seçimlerini buradan kontrol edebilirsiniz. Eksik varsa "Hızlı Düzenle" ile platformu seçin.
 
-### 📋 Yorum Onay Süreci
-- **Manuel Onay:** Tüm yeni yorumlar "Onay Bekliyor" durumuna düşer.
-- **Onay Kriteri:** Yorum bir cümle de olsa anlamlı olmalıdır. "Güzel yazı" onayı alabilir, ancak "asdasd" gibi anlamsız yorumlar çöpe atılmalıdır.
-
-### 👤 Kullanıcı Profil Denetimi
-- **Görsel Boyutu:** Profil resimleri 256x256 px olmalıdır.
-- **Uygunsuz Görsel:** Müstehcen veya nefret söylemi içeren avatarlar tespit edildiğinde profil resmi sistemden silinmeli ve kullanıcı uyarılmalıdır.
+### 📜 Activity Log (Eylem Günlüğü)
+- **Takip:** Sitedeki her türlü teknik hareketi (silme, güncelleme, giriş) IP adresiyle birlikte buradan izleyin. Şüpheli durumlarda "Export CSV" diyerek kayıtları yöneticiye iletebilirsiniz.
 
 ---
 
-## 4. KRİTİK DURUM SENARYOLARI
+## 2. PAYLAŞIM VE ONAY KURALLARI
 
-### Senaryo A: Yanlış Bilgi/Yalan Haber
-Bir kullanıcı yorumlarda haberin yanlış olduğunu iddia ediyorsa ve kanıt sunuyorsa:
-1.  Yorumu silmeyin.
-2.  Haber yazarına (Editör) haber verin.
-3.  Doğruysa haberi güncellettirin ve yorumu yanıtlayarak "Bilgi için teşekkürler, düzeltildi" yazın.
+Bir içeriğin (post veya yorum) yayına alınması için şu kriterleri karşılaması gerekir:
 
-### Senaryo B: Sürekli Spam
-Bir kullanıcı sürekli link paylaşıyorsa:
-1.  Sistem bazen otomatik engeller. Engellemediyse IP adresini not alın.
-2.  Administrator'a bildirerek IP bazlı engel talep edin.
+### ✅ İçerik Kalite Standartları
+- **Doğruluk:** Paylaşılan haberin kaynağı güvenilir olmalı (IGN, Gamespot, resmi hesaplar vb.).
+- **Yazım Kuralları:** Başlıkların tamamı büyük harf **olmamalıdır**. Sadece kelimelerin ilk harfleri büyük olmalı.
+- **Etiketleme (Tags):** Her yazı en az 3, en fazla 5 etiket içermelidir (Örn: #Starfield #Bethesda #RPG).
+
+### ❌ Reddetme Sebepleri
+- Tıklama tuzağı (Clickbait) içeren yanıltıcı başlıklar.
+- Kaynak gösterilmeden birebir kopyalanan (Copy-Paste) metinler.
+- İçinde reklam veya satış linki barındıran paylaşımlar.
+
+---
+
+## 3. GÖRSEL VE MEDYA STANDARTLARI (TEKNİK ÇİZELGE)
+
+Sitedeki görsellerin "premium" durması için bu ölçülere uymak zorunludur:
+
+| Alan | Ölçü (px) | Format | Kalite / Not |
+| :--- | :--- | :--- | :--- |
+| **Slider Görseli** | 1920 x 1080 | WebP / JPG | 72 DPI, Netlik Yüksek olmalı. |
+| **Haber Kapak (Thumbnail)** | 800 x 450 | WebP | 16:9 Oranı korunmalı. |
+| **Yazı İçi Görsel** | Max 1200 Genişlik | WebP | Dosya boyutu 200KB'ı geçmemeli. |
+| **Profil Resmi (Avatar)** | 256 x 256 | JPG / PNG | Kare (1:1), Yüz merkezlenmiş. |
+| **Platform Logoları** | 128 x 128 | SVG | Arka planı şeffaf (Transparent). |
 
 ---
 
-## 5. MODERATÖR DAVRANIŞ KURALLARI
-- **Sakin Kal:** Kullanıcı size saldırsa bile asla aynı dille yanıt vermeyin.
-- **Gücü Kötüye Kullanma:** Kişisel olarak sevmediğiniz birinin kurallara uygun yorumunu silmeyin.
-- **Görünür Ol:** Bazen sadece kaliteli bir yoruma "Harika bir bakış açısı!" demek, topluluğu pozitife yönlendirir.
+## 4. ONAY SÜRECİ (WORKFLOW)
+
+1.  **Giriş:** Admin paneline giriş yap ve "Yorumlar" sekmesine git.
+2.  **Kontrol:** Yorumda spoiler, hakaret veya reklam var mı bak.
+3.  **Karar:**
+    - Sorun yoksa: **Onayla.**
+    - Cevap gerekiyorsa: **Onayla ve Yanıtla.**
+    - Kural dışıysa: **Çöpe At.**
+    - Saldırı/Spam ise: **Spam olarak işaretle ve IP'yi Activity Log'dan kontrol et.**
+4.  **Kullanıcı Ceza:** Eğer aynı kullanıcı 3 kez uyarılmasına rağmen devam ediyorsa, "Kullanıcılar" panelinden hesabını dondurun.
 
 ---
-**İletişim:** Acil durumlarda (Site saldırısı vb.) anında Yönetici kanalından bildirim yapınız.
+
+## 5. KRİTİK NOKTALAR VE HATIRLATMALAR
+
+- **Renk Uyumu:** Paylaşımlar mutlaka doğru platform kategorisine eklenmelidir. (Örn: Xbox haberi Mor görünmemeli, Yeşil görünmelidir).
+- **Gizlilik:** Admin panelindeki kullanıcı e-postalarını veya IP adreslerini asla dışarı sızdırmayın.
+- **Hız:** Bekleyen yorumlar 2 saatten fazla panelde kalmamalıdır (Gündüz saatleri için).
+
+---
+**Moderatör El Kitabı v4.0** - *Bu rehberde yazanlar ORBI topluluk standartlarının temelidir.*
